@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onity Design System - Documentation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,20 +12,21 @@
         }
 
         :root {
-            --primary-brand: #0C2340;
-            --primary-brand-light: #1a3a5a;
-            --primary-brand-dark: #081629;
-            --accent-teal: #00A8CC;
-            --accent-teal-light: #33bbd9;
-            --accent-teal-dark: #0091ad;
+            --brand-color-1: rgb(255, 255, 255);
+            --brand-color-2: rgb(47, 32, 239);
+            --brand-color-3: rgb(207, 249, 28);
+            --brand-color-2-light: rgb(100, 85, 255);
+            --brand-color-2-dark: rgb(35, 24, 180);
+            --brand-color-3-light: rgb(220, 255, 100);
+            --brand-color-3-dark: rgb(180, 210, 20);
             --background-light: #F8FAFC;
-            --surface-white: #FFFFFF;
+            --surface-white: rgb(255, 255, 255);
             --text-primary: #1E293B;
             --text-muted: #64748B;
             --border-subtle: #e2e8f0;
-            --shadow-sm: 0 1px 2px 0 rgba(12, 35, 64, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(12, 35, 64, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(12, 35, 64, 0.15);
+            --shadow-sm: 0 1px 2px 0 rgba(47, 32, 239, 0.08);
+            --shadow-md: 0 4px 6px -1px rgba(47, 32, 239, 0.12);
+            --shadow-lg: 0 10px 15px -3px rgba(47, 32, 239, 0.15);
             --radius-sm: 6px;
             --radius-md: 8px;
             --radius-lg: 12px;
@@ -38,7 +38,7 @@
         }
 
         body {
-            font-family: 'Inter', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             color: var(--text-primary);
@@ -50,8 +50,8 @@
 
         /* ===== HEADER ===== */
         header {
-            background-color: var(--primary-brand);
-            border-bottom: 2px solid var(--accent-teal);
+            background-color: var(--brand-color-2);
+            border-bottom: 3px solid var(--brand-color-3);
             box-shadow: var(--shadow-md);
             position: sticky;
             top: 0;
@@ -71,26 +71,26 @@
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: var(--surface-white);
+            color: var(--brand-color-1);
             font-size: 1.25rem;
             font-weight: 700;
             letter-spacing: 0.5px;
-            font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
+            font-weight: bold;
         }
 
         .logo-icon {
             width: 36px;
             height: 36px;
-            background: linear-gradient(135deg, var(--accent-teal), var(--accent-teal-light));
+            background: linear-gradient(135deg, var(--brand-color-3), var(--brand-color-3-light));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-brand);
+            color: var(--brand-color-2);
             font-weight: 700;
             font-size: 1.3rem;
-            box-shadow: 0 2px 4px rgba(0, 168, 204, 0.2);
+            box-shadow: 0 2px 4px rgba(207, 249, 28, 0.3);
         }
 
         .header-nav {
@@ -100,17 +100,17 @@
         }
 
         .header-nav a {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
             position: relative;
             padding-bottom: 0.25rem;
         }
 
         .header-nav a:hover {
-            color: var(--accent-teal);
+            color: var(--brand-color-3);
         }
 
         .header-nav a::after {
@@ -120,7 +120,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent-teal);
+            background-color: var(--brand-color-3);
             transition: width 0.3s ease;
         }
 
@@ -159,7 +159,6 @@
             letter-spacing: 0.8px;
             color: var(--text-muted);
             padding: 0 1rem 0.75rem 1rem;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .sidebar-nav {
@@ -183,16 +182,16 @@
         }
 
         .sidebar-nav a:hover {
-            background-color: rgba(0, 168, 204, 0.08);
-            color: var(--accent-teal);
-            border-left-color: var(--accent-teal);
+            background-color: rgba(207, 249, 28, 0.1);
+            color: var(--brand-color-2);
+            border-left-color: var(--brand-color-3);
             padding-left: 1.1rem;
         }
 
         .sidebar-nav a.active {
-            background-color: rgba(0, 168, 204, 0.12);
-            color: var(--accent-teal);
-            border-left-color: var(--accent-teal);
+            background-color: rgba(207, 249, 28, 0.15);
+            color: var(--brand-color-2);
+            border-left-color: var(--brand-color-3);
             font-weight: 600;
             padding-left: 1.1rem;
         }
@@ -233,14 +232,14 @@
         }
 
         .breadcrumb a {
-            color: var(--accent-teal);
+            color: var(--brand-color-2);
             text-decoration: none;
             transition: var(--transition);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .breadcrumb a:hover {
-            color: var(--accent-teal-dark);
+            color: var(--brand-color-2-dark);
             text-decoration: underline;
         }
 
@@ -258,8 +257,7 @@
             font-weight: 700;
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
-            color: var(--primary-brand);
-            font-family: 'Montserrat', sans-serif;
+            color: var(--brand-color-2);
         }
 
         .hero-section p {
@@ -278,18 +276,17 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--primary-brand);
+            color: var(--brand-color-2);
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .section-title::before {
             content: '';
             width: 4px;
             height: 28px;
-            background: linear-gradient(to bottom, var(--accent-teal), var(--accent-teal-light));
+            background: linear-gradient(to bottom, var(--brand-color-3), var(--brand-color-3-light));
             border-radius: 2px;
         }
 
@@ -319,7 +316,7 @@
 
         .token-card:hover {
             box-shadow: var(--shadow-md);
-            border-color: var(--accent-teal);
+            border-color: var(--brand-color-3);
             transform: translateY(-3px);
         }
 
@@ -330,7 +327,6 @@
             letter-spacing: 0.6px;
             color: var(--text-muted);
             margin-bottom: 0.75rem;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .token-card-value {
@@ -346,7 +342,7 @@
             padding: 0.3rem 0.6rem;
             background-color: var(--background-light);
             border-radius: var(--radius-sm);
-            color: var(--primary-brand);
+            color: var(--brand-color-2);
             font-weight: 600;
             border: 1px solid var(--border-subtle);
         }
@@ -372,7 +368,7 @@
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: var(--primary-brand);
+            color: var(--brand-color-2);
         }
 
         .iframe-container {
@@ -381,7 +377,7 @@
             background-color: var(--background-light);
             border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(12, 35, 64, 0.08);
+            box-shadow: inset 0 1px 3px rgba(47, 32, 239, 0.08);
             border: 1px solid var(--border-subtle);
         }
 
@@ -404,7 +400,7 @@
         .guideline-card {
             background-color: var(--surface-white);
             border: 1px solid var(--border-subtle);
-            border-left: 4px solid var(--accent-teal);
+            border-left: 4px solid var(--brand-color-3);
             border-radius: var(--radius-lg);
             padding: 1.5rem;
             box-shadow: var(--shadow-sm);
@@ -412,16 +408,16 @@
         }
 
         .guideline-card:hover {
-            border-left-color: var(--accent-teal-light);
+            border-left-color: var(--brand-color-2);
             box-shadow: var(--shadow-md);
+            background-color: rgba(207, 249, 28, 0.02);
         }
 
         .guideline-card h4 {
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 0.75rem;
-            color: var(--primary-brand);
-            font-family: 'Montserrat', sans-serif;
+            color: var(--brand-color-2);
         }
 
         .guideline-card p {
@@ -630,20 +626,28 @@
                 <p class="section-content">The following design tokens define the visual properties of the Button component:</p>
                 <div class="tokens-grid">
                     <div class="token-card">
-                        <div class="token-card-label">Primary Brand Color</div>
+                        <div class="token-card-label">Brand Color 1</div>
                         <div class="token-card-value">
-                            <div class="color-swatch" style="background-color: #0C2340;"></div>
-                            <code>#0C2340</code>
+                            <div class="color-swatch" style="background-color: rgb(255, 255, 255); border: 2px solid #e2e8f0;"></div>
+                            <code>rgb(255, 255, 255)</code>
                         </div>
-                        <p class="text-muted" style="font-size: 0.85rem;">Deep navy for primary actions</p>
+                        <p class="text-muted" style="font-size: 0.85rem;">White - Surface & Text</p>
                     </div>
                     <div class="token-card">
-                        <div class="token-card-label">Accent Color</div>
+                        <div class="token-card-label">Brand Color 2</div>
                         <div class="token-card-value">
-                            <div class="color-swatch" style="background-color: #00A8CC;"></div>
-                            <code>#00A8CC</code>
+                            <div class="color-swatch" style="background-color: rgb(47, 32, 239);"></div>
+                            <code>rgb(47, 32, 239)</code>
                         </div>
-                        <p class="text-muted" style="font-size: 0.85rem;">Vibrant teal for accents</p>
+                        <p class="text-muted" style="font-size: 0.85rem;">Electric Blue - Primary</p>
+                    </div>
+                    <div class="token-card">
+                        <div class="token-card-label">Brand Color 3</div>
+                        <div class="token-card-value">
+                            <div class="color-swatch" style="background-color: rgb(207, 249, 28);"></div>
+                            <code>rgb(207, 249, 28)</code>
+                        </div>
+                        <p class="text-muted" style="font-size: 0.85rem;">Lime Green - Accent</p>
                     </div>
                     <div class="token-card">
                         <div class="token-card-label">Padding</div>
@@ -660,18 +664,11 @@
                         <p class="text-muted" style="font-size: 0.85rem;">Standard rounded corners</p>
                     </div>
                     <div class="token-card">
-                        <div class="token-card-label">Font Weight</div>
+                        <div class="token-card-label">Font Family</div>
                         <div class="token-card-value">
-                            <code>600</code>
+                            <code>Arial</code>
                         </div>
-                        <p class="text-muted" style="font-size: 0.85rem;">Semi-bold text</p>
-                    </div>
-                    <div class="token-card">
-                        <div class="token-card-label">Font Size</div>
-                        <div class="token-card-value">
-                            <code>14px</code>
-                        </div>
-                        <p class="text-muted" style="font-size: 0.85rem;">Base button text size</p>
+                        <p class="text-muted" style="font-size: 0.85rem;">Primary font face</p>
                     </div>
                 </div>
             </section>
