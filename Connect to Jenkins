@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS' // Matches the Node plugin configured in your Jenkins global tool setup
+        nodejs 'NodeJS' // Matches the Node plugin configured in Jenkins
     }
 
     environment {
@@ -18,22 +18,21 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci || npm install'
+                bat 'npm install'
             }
         }
 
         stage('Build Design Tokens & Storybook') {
             steps {
                 echo 'Building design tokens and static portal...'
-                // If you have build scripts configured in package.json:
-                // sh 'npm run build'
+                // If you have build scripts configured in package.json, uncomment the next line:
+                // bat 'npm run build'
             }
         }
 
         stage('Deploy to GitHub Pages') {
             steps {
                 echo 'Deploying latest changes to GitHub Pages...'
-                // Pushes updated build artifacts back to the main branch if needed
             }
         }
     }
