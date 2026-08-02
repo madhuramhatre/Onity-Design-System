@@ -18,15 +18,20 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                // Checks if package.json exists before running npm install
+                bat '''
+                    if exist package.json (
+                        npm install
+                    ) else (
+                        echo No package.json found. Skipping npm install step.
+                    )
+                '''
             }
         }
 
         stage('Build Design Tokens & Storybook') {
             steps {
                 echo 'Building design tokens and static portal...'
-                // If you have build scripts configured in package.json, uncomment the next line:
-                // bat 'npm run build'
             }
         }
 
