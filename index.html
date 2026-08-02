@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onity Design System - Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,18 +13,20 @@
         }
 
         :root {
-            --primary-color: #6366f1;
-            --primary-light: #818cf8;
-            --primary-dark: #4f46e5;
-            --secondary-color: #10b981;
-            --background-color: #f9fafb;
-            --surface-color: #ffffff;
-            --text-primary: #111827;
-            --text-secondary: #6b7280;
-            --border-color: #e5e7eb;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --primary-brand: #0C2340;
+            --primary-brand-light: #1a3a5a;
+            --primary-brand-dark: #081629;
+            --accent-teal: #00A8CC;
+            --accent-teal-light: #33bbd9;
+            --accent-teal-dark: #0091ad;
+            --background-light: #F8FAFC;
+            --surface-white: #FFFFFF;
+            --text-primary: #1E293B;
+            --text-muted: #64748B;
+            --border-subtle: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(12, 35, 64, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(12, 35, 64, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(12, 35, 64, 0.15);
             --radius-sm: 6px;
             --radius-md: 8px;
             --radius-lg: 12px;
@@ -35,13 +38,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-                sans-serif;
+            font-family: 'Inter', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             color: var(--text-primary);
-            background-color: var(--background-color);
+            background-color: var(--background-light);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -49,9 +50,9 @@
 
         /* ===== HEADER ===== */
         header {
-            background-color: var(--surface-color);
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
+            background-color: var(--primary-brand);
+            border-bottom: 2px solid var(--accent-teal);
+            box-shadow: var(--shadow-md);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -70,23 +71,26 @@
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
+            color: var(--surface-white);
+            font-size: 1.25rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
+            letter-spacing: 0.5px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
         }
 
         .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-teal-light));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
+            color: var(--primary-brand);
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 4px rgba(0, 168, 204, 0.2);
         }
 
         .header-nav {
@@ -96,15 +100,32 @@
         }
 
         .header-nav a {
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
+            position: relative;
+            padding-bottom: 0.25rem;
         }
 
         .header-nav a:hover {
-            color: var(--primary-color);
+            color: var(--accent-teal);
+        }
+
+        .header-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-teal);
+            transition: width 0.3s ease;
+        }
+
+        .header-nav a:hover::after {
+            width: 100%;
         }
 
         /* ===== MAIN LAYOUT ===== */
@@ -117,8 +138,8 @@
         /* ===== SIDEBAR ===== */
         .sidebar {
             width: 260px;
-            background-color: var(--surface-color);
-            border-right: 1px solid var(--border-color);
+            background-color: var(--surface-white);
+            border-right: 1px solid var(--border-subtle);
             padding: 2rem 0;
             position: sticky;
             top: 70px;
@@ -132,12 +153,13 @@
         }
 
         .sidebar-title {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
             padding: 0 1rem 0.75rem 1rem;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .sidebar-nav {
@@ -151,25 +173,28 @@
         .sidebar-nav a {
             display: block;
             padding: 0.75rem 1rem;
-            color: var(--text-secondary);
+            color: var(--text-primary);
             text-decoration: none;
-            border-left: 2px solid transparent;
+            border-left: 3px solid transparent;
             border-radius: 0 var(--radius-md) var(--radius-md) 0;
             transition: var(--transition);
             font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .sidebar-nav a:hover {
-            background-color: rgba(99, 102, 241, 0.05);
-            color: var(--primary-color);
-            border-left-color: var(--primary-color);
+            background-color: rgba(0, 168, 204, 0.08);
+            color: var(--accent-teal);
+            border-left-color: var(--accent-teal);
+            padding-left: 1.1rem;
         }
 
         .sidebar-nav a.active {
-            background-color: rgba(99, 102, 241, 0.1);
-            color: var(--primary-color);
-            border-left-color: var(--primary-color);
+            background-color: rgba(0, 168, 204, 0.12);
+            color: var(--accent-teal);
+            border-left-color: var(--accent-teal);
             font-weight: 600;
+            padding-left: 1.1rem;
         }
 
         /* Scrollbar styling */
@@ -182,12 +207,12 @@
         }
 
         .sidebar::-webkit-scrollbar-thumb {
-            background: var(--border-color);
+            background: var(--border-subtle);
             border-radius: 3px;
         }
 
         .sidebar::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
+            background: var(--text-muted);
         }
 
         /* ===== CONTENT AREA ===== */
@@ -204,21 +229,23 @@
             gap: 0.5rem;
             margin-bottom: 2rem;
             font-size: 0.9rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .breadcrumb a {
-            color: var(--primary-color);
+            color: var(--accent-teal);
             text-decoration: none;
             transition: var(--transition);
+            font-weight: 500;
         }
 
         .breadcrumb a:hover {
+            color: var(--accent-teal-dark);
             text-decoration: underline;
         }
 
         .breadcrumb span {
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         /* ===== HERO SECTION ===== */
@@ -230,15 +257,16 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            color: var(--primary-brand);
+            font-family: 'Montserrat', sans-serif;
         }
 
         .hero-section p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            max-width: 600px;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 650px;
         }
 
         /* ===== SECTION ===== */
@@ -250,22 +278,23 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            color: var(--primary-brand);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .section-title::before {
             content: '';
             width: 4px;
-            height: 24px;
-            background: var(--primary-color);
+            height: 28px;
+            background: linear-gradient(to bottom, var(--accent-teal), var(--accent-teal-light));
             border-radius: 2px;
         }
 
         .section-content {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             line-height: 1.7;
             margin-bottom: 1.5rem;
             font-size: 1rem;
@@ -280,8 +309,8 @@
         }
 
         .token-card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
+            background-color: var(--surface-white);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
             padding: 1.5rem;
             box-shadow: var(--shadow-sm);
@@ -290,17 +319,18 @@
 
         .token-card:hover {
             box-shadow: var(--shadow-md);
-            border-color: var(--primary-light);
-            transform: translateY(-2px);
+            border-color: var(--accent-teal);
+            transform: translateY(-3px);
         }
 
         .token-card-label {
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
+            letter-spacing: 0.6px;
+            color: var(--text-muted);
             margin-bottom: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .token-card-value {
@@ -313,25 +343,26 @@
         .token-card-value code {
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             font-size: 0.9rem;
-            padding: 0.25rem 0.5rem;
-            background-color: var(--background-color);
+            padding: 0.3rem 0.6rem;
+            background-color: var(--background-light);
             border-radius: var(--radius-sm);
-            color: var(--primary-dark);
-            font-weight: 500;
+            color: var(--primary-brand);
+            font-weight: 600;
+            border: 1px solid var(--border-subtle);
         }
 
         .color-swatch {
             width: 40px;
             height: 40px;
             border-radius: var(--radius-md);
-            border: 2px solid var(--border-color);
+            border: 2px solid var(--border-subtle);
             box-shadow: var(--shadow-sm);
         }
 
         /* ===== PREVIEW SECTION ===== */
         .preview-section {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
+            background-color: var(--surface-white);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
             padding: 2rem;
             box-shadow: var(--shadow-sm);
@@ -341,16 +372,17 @@
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            color: var(--text-primary);
+            color: var(--primary-brand);
         }
 
         .iframe-container {
             position: relative;
             width: 100%;
-            background-color: var(--background-color);
+            background-color: var(--background-light);
             border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 1px 3px rgba(12, 35, 64, 0.08);
+            border: 1px solid var(--border-subtle);
         }
 
         .iframe-container iframe {
@@ -358,7 +390,7 @@
             width: 100%;
             height: 400px;
             border: none;
-            background-color: var(--surface-color);
+            background-color: var(--surface-white);
         }
 
         /* ===== USAGE GUIDELINES ===== */
@@ -370,24 +402,31 @@
         }
 
         .guideline-card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--primary-color);
+            background-color: var(--surface-white);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--accent-teal);
             border-radius: var(--radius-lg);
             padding: 1.5rem;
             box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .guideline-card:hover {
+            border-left-color: var(--accent-teal-light);
+            box-shadow: var(--shadow-md);
         }
 
         .guideline-card h4 {
             font-size: 1rem;
             font-weight: 700;
             margin-bottom: 0.75rem;
-            color: var(--text-primary);
+            color: var(--primary-brand);
+            font-family: 'Montserrat', sans-serif;
         }
 
         .guideline-card p {
             font-size: 0.95rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             line-height: 1.6;
         }
 
@@ -402,9 +441,10 @@
                 position: static;
                 height: auto;
                 border-right: none;
-                border-bottom: 1px solid var(--border-color);
+                border-bottom: 1px solid var(--border-subtle);
                 display: none;
                 padding: 1rem 0;
+                top: auto;
             }
 
             .sidebar.mobile-open {
@@ -429,7 +469,7 @@
 
             .header-nav {
                 gap: 1rem;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .hero-section p {
@@ -439,6 +479,10 @@
             .iframe-container iframe {
                 height: 300px;
             }
+
+            .logo {
+                font-size: 1.1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -447,7 +491,13 @@
             }
 
             .logo {
-                font-size: 1.25rem;
+                font-size: 0.95rem;
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1.1rem;
             }
 
             .content {
@@ -473,7 +523,7 @@
 
         /* ===== UTILITY CLASSES ===== */
         .text-muted {
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
         .mt-2 {
@@ -580,20 +630,20 @@
                 <p class="section-content">The following design tokens define the visual properties of the Button component:</p>
                 <div class="tokens-grid">
                     <div class="token-card">
-                        <div class="token-card-label">Primary Color</div>
+                        <div class="token-card-label">Primary Brand Color</div>
                         <div class="token-card-value">
-                            <div class="color-swatch" style="background-color: #6366f1;"></div>
-                            <code>#6366f1</code>
+                            <div class="color-swatch" style="background-color: #0C2340;"></div>
+                            <code>#0C2340</code>
                         </div>
-                        <p class="text-muted" style="font-size: 0.85rem;">Used for primary action buttons</p>
+                        <p class="text-muted" style="font-size: 0.85rem;">Deep navy for primary actions</p>
                     </div>
                     <div class="token-card">
-                        <div class="token-card-label">Secondary Color</div>
+                        <div class="token-card-label">Accent Color</div>
                         <div class="token-card-value">
-                            <div class="color-swatch" style="background-color: #10b981;"></div>
-                            <code>#10b981</code>
+                            <div class="color-swatch" style="background-color: #00A8CC;"></div>
+                            <code>#00A8CC</code>
                         </div>
-                        <p class="text-muted" style="font-size: 0.85rem;">Used for success and secondary actions</p>
+                        <p class="text-muted" style="font-size: 0.85rem;">Vibrant teal for accents</p>
                     </div>
                     <div class="token-card">
                         <div class="token-card-label">Padding</div>
