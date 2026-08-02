@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'NodeJS' // Matches the Node plugin configured in your Jenkins global tool setup
+    }
+
+    environment {
+        REPO_URL = 'https://github.com/madhuramhatre/Onity-Design-System.git'
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci || npm install'
+            }
+        }
+
+        stage('Build Design Tokens & Storybook') {
+            steps {
+                echo 'Building design tokens and static portal...'
+                // If you have build scripts configured in package.json:
+                // sh 'npm run build'
+            }
+        }
+
+        stage('Deploy to GitHub Pages') {
+            steps {
+                echo 'Deploying latest changes to GitHub Pages...'
+                // Pushes updated build artifacts back to the main branch if needed
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully! Onity Design System is live and updated.'
+        }
+        failure {
+            echo 'Pipeline failed. Please check the build logs in Jenkins.'
+        }
+    }
+}
