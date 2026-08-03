@@ -76,7 +76,6 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            font-weight: bold;
         }
 
         .logo-icon {
@@ -196,24 +195,6 @@
             padding-left: 1.1rem;
         }
 
-        /* Scrollbar styling */
-        .sidebar::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .sidebar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb {
-            background: var(--border-subtle);
-            border-radius: 3px;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
-        }
-
         /* ===== CONTENT AREA ===== */
         .content {
             flex: 1;
@@ -241,10 +222,6 @@
         .breadcrumb a:hover {
             color: var(--brand-color-2-dark);
             text-decoration: underline;
-        }
-
-        .breadcrumb span {
-            color: var(--text-muted);
         }
 
         /* ===== HERO SECTION ===== */
@@ -364,13 +341,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .preview-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--brand-color-2);
-        }
-
         .iframe-container {
             position: relative;
             width: 100%;
@@ -440,94 +410,19 @@
                 border-bottom: 1px solid var(--border-subtle);
                 display: none;
                 padding: 1rem 0;
-                top: auto;
-            }
-
-            .sidebar.mobile-open {
-                display: block;
             }
 
             .content {
                 padding: 2rem 1.5rem;
             }
 
-            .hero-section h1 {
-                font-size: 2rem;
-            }
-
-            .tokens-grid {
+            .tokens-grid, .guidelines {
                 grid-template-columns: 1fr;
-            }
-
-            .guidelines {
-                grid-template-columns: 1fr;
-            }
-
-            .header-nav {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
-
-            .hero-section p {
-                font-size: 1rem;
             }
 
             .iframe-container iframe {
                 height: 300px;
             }
-
-            .logo {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-container {
-                padding: 1rem;
-            }
-
-            .logo {
-                font-size: 0.95rem;
-            }
-
-            .logo-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 1.1rem;
-            }
-
-            .content {
-                padding: 1.5rem 1rem;
-            }
-
-            .hero-section h1 {
-                font-size: 1.75rem;
-            }
-
-            .section-title {
-                font-size: 1.25rem;
-            }
-
-            .header-nav {
-                display: none;
-            }
-
-            .iframe-container iframe {
-                height: 250px;
-            }
-        }
-
-        /* ===== UTILITY CLASSES ===== */
-        .text-muted {
-            color: var(--text-muted);
-        }
-
-        .mt-2 {
-            margin-top: 1rem;
-        }
-
-        .mb-2 {
-            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -552,7 +447,6 @@
     <div class="main-container">
         <!-- SIDEBAR -->
         <aside class="sidebar">
-            <!-- Getting Started Section -->
             <div class="sidebar-section">
                 <div class="sidebar-title">Getting Started</div>
                 <ul class="sidebar-nav">
@@ -562,7 +456,6 @@
                 </ul>
             </div>
 
-            <!-- Design Tokens Section -->
             <div class="sidebar-section">
                 <div class="sidebar-title">Design Tokens</div>
                 <ul class="sidebar-nav">
@@ -573,7 +466,6 @@
                 </ul>
             </div>
 
-            <!-- Components Section -->
             <div class="sidebar-section">
                 <div class="sidebar-title">Components</div>
                 <ul class="sidebar-nav">
@@ -588,20 +480,17 @@
 
         <!-- CONTENT AREA -->
         <main class="content">
-            <!-- Breadcrumb -->
             <div class="breadcrumb">
                 <a href="#components">Components</a>
                 <span>/</span>
                 <span>Button</span>
             </div>
 
-            <!-- Hero Section -->
             <section class="hero-section">
                 <h1>Button Component</h1>
                 <p>The Button component is a fundamental interactive element used throughout the Onity Design System. It provides multiple variants, sizes, and states to meet various design requirements and user interaction patterns.</p>
             </section>
 
-            <!-- Usage Guidelines Section -->
             <section class="section">
                 <h2 class="section-title">Usage Guidelines</h2>
                 <div class="guidelines">
@@ -620,7 +509,6 @@
                 </div>
             </section>
 
-            <!-- Design Tokens Section -->
             <section class="section">
                 <h2 class="section-title">Design Tokens</h2>
                 <p class="section-content">The following design tokens define the visual properties of the Button component:</p>
@@ -629,37 +517,37 @@
                         <div class="token-card-label">Brand Color 1</div>
                         <div class="token-card-value">
                             <div class="color-swatch" style="background-color: rgb(255, 255, 255); border: 2px solid #e2e8f0;"></div>
-                            <code>rgb(255, 255, 255)</code>
+                            <code>#FFFFFF</code>
                         </div>
                         <p class="text-muted" style="font-size: 0.85rem;">White - Surface & Text</p>
                     </div>
                     <div class="token-card">
                         <div class="token-card-label">Brand Color 2</div>
                         <div class="token-card-value">
-                            <div class="color-swatch" style="background-color: rgb(47, 32, 239);"></div>
-                            <code>rgb(47, 32, 239)</code>
+                            <div class="color-swatch" style="background-color: #2F20EF;"></div>
+                            <code>#2F20EF</code>
                         </div>
                         <p class="text-muted" style="font-size: 0.85rem;">Electric Blue - Primary</p>
                     </div>
                     <div class="token-card">
                         <div class="token-card-label">Brand Color 3</div>
                         <div class="token-card-value">
-                            <div class="color-swatch" style="background-color: rgb(207, 249, 28);"></div>
-                            <code>rgb(207, 249, 28)</code>
+                            <div class="color-swatch" style="background-color: #CFF91C;"></div>
+                            <code>#CFF91C</code>
                         </div>
-                        <p class="text-muted" style="font-size: 0.85rem;">Lime Green - Accent</p>
+                        <p class="text-muted" style="font-size: 0.85rem;">Lime Green - Accent/Hover</p>
                     </div>
                     <div class="token-card">
                         <div class="token-card-label">Padding</div>
                         <div class="token-card-value">
-                            <code>12px 16px</code>
+                            <code>8px 16px</code>
                         </div>
                         <p class="text-muted" style="font-size: 0.85rem;">Default button padding</p>
                     </div>
                     <div class="token-card">
                         <div class="token-card-label">Border Radius</div>
                         <div class="token-card-value">
-                            <code>8px</code>
+                            <code>6px</code>
                         </div>
                         <p class="text-muted" style="font-size: 0.85rem;">Standard rounded corners</p>
                     </div>
@@ -673,22 +561,20 @@
                 </div>
             </section>
 
-            <!-- Live Preview Section -->
+            <!-- LIVE PREVIEW SECTION WITH FIXED IFRAME PATH -->
             <section class="section">
                 <h2 class="section-title">Live Preview</h2>
                 <p class="section-content">Explore interactive button examples and variations below:</p>
                 <div class="preview-section">
                     <div class="iframe-container">
-                        <iframe src="./storybook/iframe.html?id=example-button--primary&viewMode=story" title="Storybook Button Component Preview"></iframe>
+                        <iframe src="./iframe.html?id=example-button--docs&viewMode=story" title="Storybook Button Component Preview"></iframe>
                     </div>
                 </div>
-                <p class="section-content mt-2">The preview above displays live Storybook components. Use the controls to interact with different button states, sizes, and variants in real-time.</p>
+                <p class="section-content" style="margin-top: 1rem;">The preview above displays live Storybook components embedded directly in your documentation. Use the controls to interact with different button states in real-time.</p>
             </section>
 
-            <!-- Implementation Section -->
             <section class="section">
                 <h2 class="section-title">Implementation</h2>
-                <p class="section-content">To implement the Button component in your project, follow these best practices:</p>
                 <div class="guidelines">
                     <div class="guideline-card">
                         <h4>Import</h4>
@@ -700,7 +586,7 @@
                     </div>
                     <div class="guideline-card">
                         <h4>Theming</h4>
-                        <p>Leverage design tokens for consistent styling across your application using CSS variables or theme providers.</p>
+                        <p>Leverage design tokens for consistent styling across your application using CSS variables.</p>
                     </div>
                 </div>
             </section>
@@ -708,9 +594,7 @@
     </div>
 
     <script>
-        // Sidebar active state management
         const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
-
         sidebarLinks.forEach(link => {
             link.addEventListener('click', function() {
                 sidebarLinks.forEach(l => l.classList.remove('active'));
@@ -718,7 +602,6 @@
             });
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
