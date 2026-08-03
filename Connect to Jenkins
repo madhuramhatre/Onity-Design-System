@@ -31,7 +31,7 @@ pipeline {
 
         stage('Build Design Tokens & Storybook') {
             steps {
-                echo 'Building design tokens and static portal...'
+                bat 'npm run build-storybook'
             }
         }
 
