@@ -1,5 +1,3 @@
-
-
 /** @type { import('@storybook/html-vite').StorybookConfig } */
 const config = {
   "stories": [
@@ -10,7 +8,8 @@ const config = {
     "@chromatic-com/storybook",
     "@storybook/addon-vitest",
     "@storybook/addon-a11y",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
+    "@storybook/addon-designs"
   ],
   "framework": "@storybook/html-vite"
 };

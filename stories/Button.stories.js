@@ -31,6 +31,12 @@ export const Primary = {
     primary: true,
     label: 'Button',
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/ak0IV3s1bbMRn3lrWQGxyj/Copy-of-Customer-Facing-Design-System--Copy-?node-id=421-4878&t=W9b0Hgoyn8meMiZr-4', // <-- PASTE YOUR FIGMA LINK INSIDE THESE QUOTES
+    },
+  },
 };
 
 export const Secondary = {
