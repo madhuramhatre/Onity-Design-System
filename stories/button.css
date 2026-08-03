@@ -1,30 +1,37 @@
+@import './tokens.css';
+
 .storybook-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--onity-space-button-icon-gap);
   cursor: pointer;
   border: 0;
-  border-radius: 3em;
-  font-weight: 700;
-  line-height: 1;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border-radius: var(--onity-radius-button);
+  padding: var(--onity-space-button-padding-y) var(--onity-space-button-padding-x);
+  font-weight: var(--onity-font-weight-button);
+  line-height: var(--onity-line-height-button);
+  font-family: var(--onity-font-family-base);
 }
+
 .storybook-button--primary {
-  background-color: #555ab9;
-  color: white;
+  background-color: var(--onity-color-primary-bg);
+  color: var(--onity-color-primary-text);
 }
+
 .storybook-button--secondary {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-  background-color: transparent;
-  color: #333;
+  background-color: var(--onity-color-secondary-bg);
+  color: var(--onity-color-secondary-text);
 }
+
 .storybook-button--small {
-  padding: 10px 16px;
-  font-size: 12px;
+  font-size: var(--onity-font-size-button-small);
 }
+
 .storybook-button--medium {
-  padding: 11px 20px;
-  font-size: 14px;
+  font-size: var(--onity-font-size-button-medium);
 }
+
 .storybook-button--large {
-  padding: 12px 24px;
-  font-size: 16px;
+  font-size: var(--onity-font-size-button-large);
 }

@@ -1,0 +1,55 @@
+:root {
+  --onity-font-family-base: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --onity-font-weight-button: 700;
+  --onity-line-height-button: 1;
+
+  --onity-space-button-padding-x: 16px;
+  --onity-space-button-padding-y: 8px;
+  --onity-space-button-icon-gap: 8px;
+  --onity-radius-button: 6px;
+
+  --onity-color-primary-bg: #2F20EF;
+  --onity-color-primary-text: #FFFFFF;
+  --onity-color-primary-icon: #FFFFFF;
+  --onity-color-primary-hover-bg: #CFF91C;
+  --onity-color-primary-hover-text: #383838;
+  --onity-color-primary-hover-icon: #383838;
+  --onity-color-primary-pressed-bg: #383838;
+  --onity-color-primary-pressed-text: #FFFFFF;
+  --onity-color-primary-pressed-icon: #FFFFFF;
+  --onity-color-primary-disabled-bg: #EDEDED;
+  --onity-color-primary-disabled-text: #6B6B6B;
+  --onity-color-primary-disabled-icon: #6B6B6B;
+
+  --onity-color-secondary-bg: #CFF91C;
+  --onity-color-secondary-text: #383838;
+  --onity-color-secondary-icon: #383838;
+  --onity-color-secondary-hover-bg: #383838;
+  --onity-color-secondary-hover-text: #FFFFFF;
+  --onity-color-secondary-hover-icon: #FFFFFF;
+  --onity-color-secondary-pressed-bg: #2F20EF;
+  --onity-color-secondary-pressed-text: #FFFFFF;
+  --onity-color-secondary-pressed-icon: #FFFFFF;
+  --onity-color-secondary-disabled-bg: #EDEDED;
+  --onity-color-secondary-disabled-text: #6B6B6B;
+  --onity-color-secondary-disabled-icon: #6B6B6B;
+
+  --onity-color-outline-bg: #FFFFFF;
+  --onity-color-outline-text: #2F20EF;
+  --onity-color-outline-icon: #2F20EF;
+  --onity-color-outline-stroke: #2F20EF;
+  --onity-color-outline-stroke-weight: 1px;
+  --onity-color-outline-hover-text: #383838;
+  --onity-color-outline-hover-icon: #383838;
+  --onity-color-outline-hover-stroke: #383838;
+  --onity-color-outline-pressed-text: #1F14AB;
+  --onity-color-outline-pressed-icon: #1F14AB;
+  --onity-color-outline-pressed-stroke: #1F14AB;
+  --onity-color-outline-disabled-text: #6B6B6B;
+  --onity-color-outline-disabled-icon: #6B6B6B;
+  --onity-color-outline-disabled-stroke: #6B6B6B;
+
+  --onity-font-size-button-small: 12px;
+  --onity-font-size-button-medium: 14px;
+  --onity-font-size-button-large: 16px;
+}

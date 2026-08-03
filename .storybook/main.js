@@ -1,4 +1,6 @@
 /** @type { import('@storybook/html-vite').StorybookConfig } */
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'Onity-Design-System';
+
 const config = {
   "stories": [
     "../stories/**/*.mdx",
@@ -11,6 +13,10 @@ const config = {
     "@storybook/addon-docs",
     "@storybook/addon-designs"
   ],
-  "framework": "@storybook/html-vite"
+  "framework": "@storybook/html-vite",
+  async viteFinal(config) {
+    config.base = process.env.STORYBOOK_BASE_PATH || (process.env.GITHUB_ACTIONS ? `/${repoName}/` : '/');
+    return config;
+  }
 };
 export default config;
