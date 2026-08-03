@@ -35,23 +35,24 @@ pipeline {
             }
         }
 
-   stage('Deploy to GitHub Pages') {
-    steps {
-        withCredentials([string(credentialsId: 'GITHUB_PAT', variable: 'PAT')]) {
-            bat '''
-                git config --global core.longpaths true
-                cd storybook-static
-                git init
-                git config user.name "Jenkins CI"
-                git config user.email "jenkins@onity.com"
-                git checkout -b gh-pages
-                git add .
-                git commit -m "Deploy Storybook to GitHub Pages [skip ci]"
-                git push --force https://%PAT%@github.com/madhuramhatre/Onity-Design-System.git gh-pages
-            '''
+        stage('Deploy to GitHub Pages') {
+            steps {
+                withCredentials([string(credentialsId: 'GITHUB_PAT', variable: 'PAT')]) {
+                    bat '''
+                        git config --global core.longpaths true
+                        cd storybook-static
+                        git init
+                        git config user.name "Jenkins CI"
+                        git config user.email "jenkins@onity.com"
+                        git checkout -b gh-pages
+                        git add .
+                        git commit -m "Deploy Storybook to GitHub Pages [skip ci]"
+                        git push --force https://%PAT%@github.com/madhuramhatre/Onity-Design-System.git gh-pages
+                    '''
+                }
+            }
         }
     }
-}
 
     post {
         success {
