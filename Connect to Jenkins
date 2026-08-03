@@ -35,11 +35,15 @@ pipeline {
             }
         }
 
-        stage('Deploy to GitHub Pages') {
-            steps {
-                bat 'npx gh-pages -d storybook-static'
-            }
-        }
+       stage('Deploy to GitHub Pages') {
+    steps {
+        bat '''
+            git config --global core.longpaths true
+            git config core.longpaths true
+            npx gh-pages -d storybook-static
+        '''
+    }
+}
     }
 
     post {
