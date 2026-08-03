@@ -35,9 +35,19 @@ pipeline {
             }
         }
 
-        stage('Deploy to GitHub Pages') {
+    stage('Deploy to GitHub Pages') {
             steps {
-                bat 'npx gh-pages -d storybook-static'
+                bat '''
+                    git config --global core.longpaths true
+                    cd storybook-static
+                    git init
+                    git config user.name "Jenkins CI"
+                    git config user.email "jenkins@onity.com"
+                    git checkout -b gh-pages
+                    git add .
+                    git commit -m "Deploy Storybook to GitHub Pages [skip ci]"
+                    git push --force https://github.com/madhuramhatre/Onity-Design-System.git gh-pages
+                '''
             }
         }
     }
