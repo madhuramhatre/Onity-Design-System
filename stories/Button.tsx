@@ -266,3 +266,6 @@ export const Box = (): JSX.Element => {
     </main>
   );
 };
+
+// Export alias so stories using createButton can render Box
+export const createButton = Box;
