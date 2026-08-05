@@ -239,10 +239,10 @@ export const Box = () => {
   };
 
   return (
-    <main className="h-[898px] w-[867px]">
+    <main className="w-full p-4 box-border">
       <section
         aria-label="Button component variants"
-        className="fixed left-10 top-10 flex w-[867px] flex-wrap items-start gap-x-[89px] gap-y-[165px] overflow-hidden rounded-[5px] border border-dashed border-[#9747ff] px-4 py-[19px]"
+        className="flex w-full flex-wrap items-start gap-6 rounded-[5px] border border-dashed border-[#9747ff] p-6 box-border"
       >
         {buttonVariants.map((variant) => (
           <div
