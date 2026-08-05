@@ -1,4 +1,13 @@
-import React, { useState, JSX } from "react";
+import React, { useState } from "react";
+
+// Local JSX type fallback to resolve ts(7026) intrinsic element error
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
+  }
+}
 
 type ButtonState =
   | "primary-filled-default"
@@ -214,7 +223,7 @@ const buttonVariants: ButtonVariant[] = [
   },
 ];
 
-const ButtonIcon = ({ src }: { src: string }): JSX.Element => (
+const ButtonIcon = ({ src }: { src: string }) => (
   <span
     aria-hidden="true"
     className="relative h-6 w-6 shrink-0 bg-[100%_100%]"
@@ -222,7 +231,7 @@ const ButtonIcon = ({ src }: { src: string }): JSX.Element => (
   />
 );
 
-export const Box = (): JSX.Element => {
+export const Box = () => {
   const [announcement, setAnnouncement] = useState("");
 
   const handleButtonClick = (label: string) => {
