@@ -6,6 +6,12 @@ import { createButton } from './Button';
 export default {
   title: 'Example/Button',
   tags: ['autodocs'],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/ak0IV3s1bbMRn3lrWQGxyj/Copy-of-Customer-Facing-Design-System--Copy-?node-id=421-4878&m=dev',
+    },
+  },
   render: ({ label, ...args }) => {
     // You can either use a function to create DOM elements or use a plain html string!
     // return `<div>${label}</div>`;
@@ -30,12 +36,6 @@ export const Primary = {
   args: {
     primary: true,
     label: 'Button',
-  },
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/design/ak0IV3s1bbMRn3lrWQGxyj/Copy-of-Customer-Facing-Design-System--Copy-?node-id=421-4878&t=W9b0Hgoyn8meMiZr-4', // <-- PASTE YOUR FIGMA LINK INSIDE THESE QUOTES
-    },
   },
 };
 

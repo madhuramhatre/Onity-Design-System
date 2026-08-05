@@ -1,8 +1,5 @@
 /** @type { import('@storybook/html-vite').StorybookConfig } */
 
-// Automatically extract repository name for GitHub Pages path resolution
-const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'Onity-Design-System';
-
 const config = {
   stories: [
     '../stories/**/*.mdx',
@@ -20,8 +17,7 @@ const config = {
     options: {}
   },
   async viteFinal(config) {
-    // Sets base path to '/Onity-Design-System/' in GitHub Actions to fix dynamic import errors
-    config.base = process.env.STORYBOOK_BASE_PATH || (process.env.GITHUB_ACTIONS ? `/${repoName}/` : '/');
+    config.base = './';
     return config;
   }
 };

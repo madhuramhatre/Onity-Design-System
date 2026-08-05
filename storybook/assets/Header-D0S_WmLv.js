@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t,t as n}from"./Button-BrO716ck.js";var r;function i(){return(i=e((()=>{t(),r=({user:e,onLogout:t,onLogin:r,onCreateAccount:i})=>{let a=document.createElement(`header`),o=document.createElement(`div`);o.className=`storybook-header`,o.insertAdjacentHTML(`afterbegin`,`<div>
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t,t as n}from"./Button-CjaV-JMd.js";var r;function i(){return(i=e((()=>{t(),r=({user:e,onLogout:t,onLogin:r,onCreateAccount:i})=>{let a=document.createElement(`header`),o=document.createElement(`div`);o.className=`storybook-header`,o.insertAdjacentHTML(`afterbegin`,`<div>
     <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <g fill="none" fillRule="evenodd">
         <path
