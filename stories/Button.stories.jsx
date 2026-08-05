@@ -15,4 +15,4 @@ export default {
   args: { onClick: fn() },
 };
 
-export const AllFigmaVariants = () => <Box />;
+export const Default = () => <Box />;
