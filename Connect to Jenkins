@@ -7,6 +7,7 @@ pipeline {
 
     environment {
         REPO_URL = 'https://github.com/madhuramhatre/Onity-Design-System.git'
+        CHROMATIC_PROJECT_TOKEN = credentials('CHROMATIC_PROJECT_TOKEN')
     }
 
     stages {
@@ -18,7 +19,6 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Checks if package.json exists before running npm install
                 bat '''
                     if exist package.json (
                         npm install
@@ -35,19 +35,42 @@ pipeline {
             }
         }
 
-        stage('Deploy to GitHub Pages') {
+        stage('Publish to Chromatic') {
+            steps {
+                bat 'npx chromatic --exit-zero-on-changes'
+            }
+        }
+
+        stage('Deploy Showcase & Storybook to GitHub Pages') {
             steps {
                 withCredentials([string(credentialsId: 'GITHUB_PAT', variable: 'PAT')]) {
                     bat '''
                         git config --global core.longpaths true
-                        cd storybook-static
+                        
+                        :: 1. Reset deploy directory
+                        if exist deploy_site rmdir /s /q deploy_site
+                        mkdir deploy_site
+                        
+                        :: 2. Copy Storybook assets into a subfolder
+                        mkdir deploy_site\\storybook
+                        xcopy /E /I /Y storybook-static deploy_site\\storybook
+                        
+                        :: 3. Copy custom UI index.html directly to root
+                        copy /Y index.html deploy_site\\index.html
+                        
+                        :: 4. Prevent GitHub Pages from ignoring internal Storybook assets
+                        type nul > deploy_site\\.nojekyll
+                        
+                        :: 5. Push to gh-pages branch from deploy_site directory
+                        pushd deploy_site
                         git init
                         git config user.name "Jenkins CI"
                         git config user.email "jenkins@onity.com"
                         git checkout -b gh-pages
                         git add .
-                        git commit -m "Deploy Storybook to GitHub Pages [skip ci]"
+                        git commit -m "Deploy Showcase UI with isolated Storybook [skip ci]"
                         git push --force https://%PAT%@github.com/madhuramhatre/Onity-Design-System.git gh-pages
+                        popd
                     '''
                 }
             }
@@ -56,7 +79,7 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline completed successfully! Onity Design System is live and updated.'
+            echo 'Pipeline completed successfully! Showcase with embedded Storybook is live.'
         }
         failure {
             echo 'Pipeline failed. Please check the build logs in Jenkins.'
