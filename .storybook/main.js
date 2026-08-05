@@ -1,5 +1,4 @@
-/** @type { import('@storybook/html-vite').StorybookConfig } */
-
+/** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
   stories: [
     '../stories/**/*.mdx',
@@ -13,9 +12,10 @@ const config = {
     '@storybook/addon-designs'
   ],
   framework: {
-    name: '@storybook/html-vite',
+    name: '@storybook/react-vite',
     options: {}
   },
+  staticDirs: ['../stories/assets'],
   async viteFinal(config) {
     config.base = './';
     return config;
