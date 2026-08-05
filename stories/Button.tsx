@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, JSX } from "react";
 
 type ButtonState =
   | "primary-filled-default"
@@ -36,8 +36,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-filled-default",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-3.svg",
-    rightIcon: "/keyboard-arrow-right-3.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-1",
     buttonClassName: "bg-[color:var(--buttons-primary-filled-default-bg)]",
     textClassName: "text-[color:var(--buttons-primary-filled-default-text)]",
@@ -45,8 +45,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-filled-hover",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left.svg",
-    rightIcon: "/keyboard-arrow-right-4.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-2",
     buttonClassName: "bg-[color:var(--buttons-primary-filled-hover-bg)]",
     textClassName: "text-[color:var(--buttons-primary-filled-hover-text)]",
@@ -54,8 +54,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-filled-pressed",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-3.svg",
-    rightIcon: "/keyboard-arrow-right-3.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-3",
     buttonClassName: "bg-[color:var(--buttons-primary-filled-pressed-bg)]",
     textClassName: "text-[color:var(--buttons-primary-filled-pressed-text)]",
@@ -63,8 +63,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-filled-disabled",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-4.svg",
-    rightIcon: "/keyboard-arrow-right-2.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     buttonClassName: "bg-[color:var(--buttons-primary-filled-disabled-AA-bg)]",
     textClassName:
       "text-[color:var(--buttons-primary-filled-disabled-AA-text)]",
@@ -73,8 +73,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "secondary-filled-default",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left.svg",
-    rightIcon: "/keyboard-arrow-right-4.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-1",
     buttonClassName: "bg-[color:var(--buttons-secondary-filled-default-bg)]",
     textClassName: "text-[color:var(--buttons-secondary-filled-default-text)]",
@@ -82,8 +82,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "secondary-filled-hover",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-3.svg",
-    rightIcon: "/keyboard-arrow-right-3.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-2",
     buttonClassName: "bg-[color:var(--buttons-secondary-filled-hover-bg)]",
     textClassName: "text-[color:var(--buttons-secondary-filled-hover-text)]",
@@ -91,8 +91,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "secondary-filled-pressed",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-3.svg",
-    rightIcon: "/keyboard-arrow-right-3.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-3",
     buttonClassName: "bg-[color:var(--buttons-secondary-filled-pressed-bg)]",
     textClassName: "text-[color:var(--buttons-secondary-filled-pressed-text)]",
@@ -100,8 +100,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "secondary-filled-disabled",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-4.svg",
-    rightIcon: "/keyboard-arrow-right-2.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     buttonClassName:
       "bg-[color:var(--buttons-secondary-filled-disabled-AA-bg)]",
     textClassName:
@@ -111,8 +111,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-outlined-default",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-2.svg",
-    rightIcon: "/keyboard-arrow-right.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-1",
     buttonClassName:
       "bg-[color:var(--buttons-primary-outlined-default-bg)] border border-solid border-[color:var(--buttons-primary-outlined-default-stroke)]",
@@ -121,8 +121,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-outlined-hover",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left.svg",
-    rightIcon: "/keyboard-arrow-right-4.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-2",
     buttonClassName:
       "bg-[color:var(--buttons-primary-outlined-hover-bg)] border border-solid border-[color:var(--buttons-primary-outlined-hover-stroke)]",
@@ -131,8 +131,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-outlined-pressed",
     label: "Button",
-    leftIcon: "/image.svg",
-    rightIcon: "/keyboard-arrow-right-5.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-3",
     buttonClassName:
       "bg-[color:var(--buttons-primary-outlined-pressed-bg)] border-2 border-solid border-[color:var(--buttons-primary-outlined-pressed-stroke)]",
@@ -141,8 +141,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-outlined-disabled",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-4.svg",
-    rightIcon: "/keyboard-arrow-right-2.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     buttonClassName:
       "bg-[color:var(--buttons-primary-outlined-disabled-AA-bg)] border border-solid border-[color:var(--buttons-primary-outlined-disabled-AA-stroke)]",
     textClassName:
@@ -152,8 +152,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-link-default",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-2.svg",
-    rightIcon: "/keyboard-arrow-right.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-1",
     buttonClassName: "bg-[color:var(--buttons-primary-link-default-bg)]",
     textClassName: "text-[color:var(--buttons-primary-link-default-text)]",
@@ -161,8 +161,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-link-hover",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left.svg",
-    rightIcon: "/keyboard-arrow-right-4.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-2",
     buttonClassName: "bg-[color:var(--buttons-primary-link-hover-bg)]",
     textClassName: "text-[color:var(--buttons-primary-link-hover-text)]",
@@ -170,8 +170,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-link-pressed",
     label: "Button",
-    leftIcon: "/image.svg",
-    rightIcon: "/keyboard-arrow-right-5.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-3",
     buttonClassName: "bg-[color:var(--buttons-primary-link-pressed-bg)]",
     textClassName: "text-[color:var(--buttons-primary-link-pressed-text)]",
@@ -179,8 +179,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "primary-link-disabled",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-4.svg",
-    rightIcon: "/keyboard-arrow-right-2.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     buttonClassName: "bg-[color:var(--buttons-primary-link-disabled-AA-bg)]",
     textClassName: "text-[color:var(--buttons-primary-link-disabled-AA-text)]",
     disabled: true,
@@ -188,8 +188,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "dark-default",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-3.svg",
-    rightIcon: "/keyboard-arrow-right-3.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-1",
     buttonClassName: "",
     textClassName: "text-[color:var(--color-palette-base-white)]",
@@ -197,8 +197,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "dark-hover",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-3.svg",
-    rightIcon: "/keyboard-arrow-right-3.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-2",
     buttonClassName: "bg-[color:var(--color-palette-gray-800)]",
     textClassName: "text-[color:var(--color-palette-base-white)]",
@@ -206,8 +206,8 @@ const buttonVariants: ButtonVariant[] = [
   {
     id: "dark-pressed",
     label: "Button",
-    leftIcon: "/keyboard-arrow-left-3.svg",
-    rightIcon: "/keyboard-arrow-right-3.svg",
+    leftIcon: "./assets/accessibility.svg",
+    rightIcon: "./assets/accessibility.svg",
     wrapperClassName: "shadow-elevation-lvl-3",
     buttonClassName: "bg-[color:var(--color-palette-gray-900)]",
     textClassName: "text-[color:var(--color-palette-base-white)]",
@@ -267,5 +267,4 @@ export const Box = (): JSX.Element => {
   );
 };
 
-// Export alias so stories using createButton can render Box
 export const createButton = Box;
