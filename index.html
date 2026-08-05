@@ -332,34 +332,44 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* ===== PREVIEW SECTION ===== */
+        /* ===== LIVE PREVIEW SECTION (NATIVE COMPONENT) ===== */
         .preview-section {
             background-color: var(--surface-white);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
-            padding: 2rem;
+            padding: 2.5rem;
             box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            min-height: 200px;
         }
 
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            height: 120px;
-            background-color: var(--surface-white);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(47, 32, 239, 0.08);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .iframe-container iframe {
-            position: absolute;
-            top: -120px;
-            left: 0;
-            width: 100%;
-            height: 300px;
+        /* Onity Button Styling */
+        .onity-btn {
+            background-color: var(--brand-color-2);
+            color: var(--brand-color-1);
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: Arial, sans-serif;
             border: none;
-            background-color: var(--surface-white);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .onity-btn:hover {
+            background-color: var(--brand-color-2-dark);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .onity-btn:active {
+            transform: translateY(0);
         }
 
         /* ===== USAGE GUIDELINES ===== */
@@ -566,11 +576,10 @@
                 <h2 class="section-title">Live Preview</h2>
                 <p class="section-content">Explore interactive button examples and variations below:</p>
                 <div class="preview-section">
-                    <div class="iframe-container">
-                        <iframe src="https://6a7075b906817cbb8dcfe962-bjjhpjopup.chromatic.com/iframe.html?id=example-button--primary&viewMode=story" title="Storybook Button Component Preview"></iframe>
-                    </div>
+                    <!-- Native Onity Button Preview -->
+                    <button class="onity-btn" onclick="alert('Button clicked successfully!')">Button</button>
                 </div>
-                <p class="section-content" style="margin-top: 1rem;">The preview above displays live Storybook components embedded directly in your documentation. Use the controls to interact with different button states in real-time.</p>
+                <p class="section-content" style="margin-top: 1rem;">The preview above displays the live Onity Button component rendered directly using your design system tokens.</p>
                 <p style="margin-top: 1rem;"><a href="https://6a7075b906817cbb8dcfe962-bjjhpjopup.chromatic.com" target="_blank" rel="noopener" style="display: inline-block; padding: 0.7rem 1rem; background: var(--brand-color-2); color: white; border-radius: 6px; text-decoration: none; font-weight: 600;">Open Storybook</a></p>
             </section>
 
