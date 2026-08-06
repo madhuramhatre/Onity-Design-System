@@ -4,7 +4,6 @@ import Button, { buttonVariants } from './Button.jsx';
 export default {
   title: 'Components/Button',
   component: Button,
-  tags: ['autodocs'],
   parameters: {
     design: {
       type: 'figma',
