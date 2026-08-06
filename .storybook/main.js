@@ -14,8 +14,8 @@ const config = {
     options: {}
   },
   async viteFinal(config) {
-    // Ensures assets point correctly to your GitHub Pages subpath
-    config.base = '/Onity-Design-System/';
+    // Use relative paths so assets resolve correctly in Chromatic and GitHub Pages
+    config.base = './';
     return config;
   }
 };
