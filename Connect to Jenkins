@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'design-system-agent'
+    }
 
     tools {
         nodejs 'NodeJS' // Matches the Node plugin configured in Jenkins
@@ -37,7 +39,6 @@ pipeline {
 
         stage('Publish to Chromatic') {
             steps {
-                // CHANGE 1: Added --exit-once-uploaded so visual regression failures don't stop Jenkins
                 bat 'npx chromatic --exit-zero-on-changes --exit-once-uploaded'
             }
         }
@@ -55,10 +56,10 @@ pipeline {
                         :: 2. Copy Storybook assets into a subfolder
                         mkdir deploy_site\\storybook
                         
-                        :: CHANGE 2: Copy from 'storybook' instead of 'storybook-static' (matching your build output)
+                        :: Copy from 'storybook' instead of 'storybook-static' (matching your build output)
                         xcopy /E /I /Y storybook deploy_site\\storybook
                         
-                        :: 3. Copy custom UI index.html directly to root
+                        :: 3. Copy custom index.html directly to root
                         copy /Y index.html deploy_site\\index.html
                         
                         :: 4. Prevent GitHub Pages from ignoring internal Storybook assets
