@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t,t as n}from"./Header-D0S_WmLv.js";var r;function i(){return(i=e((()=>{t(),r=()=>{let e=document.createElement(`article`),t=null,r=null,i=()=>{let e=document.getElementsByTagName(`article`)[0];e.replaceChild(c(),e.firstChild)},a=()=>{t={name:`Jane Doe`},i()},o=()=>{t=null,i()},s=()=>{t={name:`Jane Doe`},i()},c=()=>n({onLogin:a,onLogout:o,onCreateAccount:s,user:t});return r=c(),e.appendChild(r),e.insertAdjacentHTML(`beforeend`,`
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{n as t,t as n}from"./Header-BRTTu87Z.js";var r;function i(){return(i=e((()=>{t(),r=()=>{let e=document.createElement(`article`),t=null,r=null,i=()=>{let e=document.getElementsByTagName(`article`)[0];e.replaceChild(c(),e.firstChild)},a=()=>{t={name:`Jane Doe`},i()},o=()=>{t=null,i()},s=()=>{t={name:`Jane Doe`},i()},c=()=>n({onLogin:a,onLogout:o,onCreateAccount:s,user:t});return r=c(),e.appendChild(r),e.insertAdjacentHTML(`beforeend`,`
   <section class="storybook-page">
     <h2>Pages in Storybook</h2>
     <p>
