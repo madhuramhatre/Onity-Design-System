@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
+ "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o storybook",
-    "chromatic": "npx chromatic --project-token=chpt_247395fd9f1b48f"
+    "chromatic": "STORYBOOK_IS_CHROMATIC=true npx chromatic --project-token=chpt_247395fd9f1b48f"
   },
   "repository": {
     "type": "git",
