@@ -14,7 +14,8 @@ const config = {
     options: {}
   },
   async viteFinal(config) {
-    config.base = './';
+    // Ensures assets point correctly to your GitHub Pages subpath
+    config.base = '/Onity-Design-System/';
     return config;
   }
 };
