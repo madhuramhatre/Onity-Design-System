@@ -1,8 +1,8 @@
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
   stories: [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+    "../stories/**/*.mdx",
+    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
   addons: [
     "@storybook/addon-docs",
@@ -14,7 +14,6 @@ const config = {
     options: {}
   },
   async viteFinal(config) {
-    // Use relative paths so assets resolve correctly in Chromatic and GitHub Pages
     config.base = './';
     return config;
   }
