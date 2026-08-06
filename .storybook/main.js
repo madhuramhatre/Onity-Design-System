@@ -14,8 +14,10 @@ const config = {
     options: {}
   },
   async viteFinal(config) {
-    // Use relative path for Chromatic builds, and GitHub Pages subpath for production
-    if (process.env.STORYBOOK_IS_CHROMATIC === 'true') {
+    // Automatically detect if Chromatic is running the build
+    const isChromaticBuild = process.argv.some(arg => arg.includes('chromatic'));
+    
+    if (isChromaticBuild) {
       config.base = './';
     } else {
       config.base = '/Onity-Design-System/';
