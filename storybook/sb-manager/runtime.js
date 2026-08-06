@@ -18899,7 +18899,7 @@ var CodeWrapper = styled.div(({ theme }) => ({
         {
           id: "guidedTour",
           label: "Take the guided tour",
-          available: ({ index }) => !!index && "example-button--primary" in index && !!globalThis?.FEATURES?.controls && addons.experimental_getRegisteredAddons().includes(ADDON_ID3),
+          available: ({ index }) => !!index && "components-button--docs" in index && !!globalThis?.FEATURES?.controls && addons.experimental_getRegisteredAddons().includes(ADDON_ID3),
           criteria: "Guided tour is completed",
           subscribe: ({ api, accept }) => api.on(ADDON_ONBOARDING_CHANNEL, ({ step, type }) => {
             type !== "dismiss" && ["6:IntentSurvey", "7:FinishedOnboarding"].includes(step) && accept();
