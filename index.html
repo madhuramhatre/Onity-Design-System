@@ -3,55 +3,619 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentation - Figma Live Preview</title>
+    <title>Onity Design System - Documentation</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 40px;
-            background-color: #f9f9f9;
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .documentation-container {
-            max-width: 900px;
+
+        :root {
+            --brand-color-1: rgb(255, 255, 255);
+            --brand-color-2: rgb(47, 32, 239);
+            --brand-color-3: rgb(207, 249, 28);
+            --brand-color-2-light: rgb(100, 85, 255);
+            --brand-color-2-dark: rgb(35, 24, 180);
+            --brand-color-3-light: rgb(220, 255, 100);
+            --brand-color-3-dark: rgb(180, 210, 20);
+            --background-light: #F8FAFC;
+            --surface-white: rgb(255, 255, 255);
+            --text-primary: #1E293B;
+            --text-muted: #64748B;
+            --border-subtle: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(47, 32, 239, 0.08);
+            --shadow-md: 0 4px 6px -1px rgba(47, 32, 239, 0.12);
+            --shadow-lg: 0 10px 15px -3px rgba(47, 32, 239, 0.15);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: var(--text-primary);
+            background-color: var(--background-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--brand-color-2);
+            border-bottom: 3px solid var(--brand-color-3);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--brand-color-1);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--brand-color-3), var(--brand-color-3-light));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brand-color-2);
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 4px rgba(207, 249, 28, 0.3);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 0.25rem;
+        }
+
+        .header-nav a:hover {
+            color: var(--brand-color-3);
+        }
+
+        .header-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--brand-color-3);
+            transition: width 0.3s ease;
+        }
+
+        .header-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== MAIN LAYOUT ===== */
+        .main-container {
+            display: flex;
+            flex: 1;
+            max-width: 100%;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 260px;
+            background-color: var(--surface-white);
+            border-right: 1px solid var(--border-subtle);
+            padding: 2rem 0;
+            position: sticky;
+            top: 70px;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        .sidebar-section {
+            padding: 0 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            padding: 0 1rem 0.75rem 1rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .sidebar-nav a:hover {
+            background-color: rgba(207, 249, 28, 0.1);
+            color: var(--brand-color-2);
+            border-left-color: var(--brand-color-3);
+            padding-left: 1.1rem;
+        }
+
+        .sidebar-nav a.active {
+            background-color: rgba(207, 249, 28, 0.15);
+            color: var(--brand-color-2);
+            border-left-color: var(--brand-color-3);
+            font-weight: 600;
+            padding-left: 1.1rem;
+        }
+
+        /* ===== CONTENT AREA ===== */
+        .content {
+            flex: 1;
+            padding: 3rem;
+            max-width: 1000px;
             margin: 0 auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        .preview-wrapper {
             width: 100%;
-            margin-top: 15px;
         }
-        iframe {
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb a {
+            color: var(--brand-color-2);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--brand-color-2-dark);
+            text-decoration: underline;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            margin-bottom: 3rem;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+            color: var(--brand-color-2);
+        }
+
+        .hero-section p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--brand-color-2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: linear-gradient(to bottom, var(--brand-color-3), var(--brand-color-3-light));
+            border-radius: 2px;
+        }
+
+        .section-content {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        /* ===== DESIGN TOKENS GRID ===== */
+        .tokens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .token-card {
+            background-color: var(--surface-white);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .token-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--brand-color-3);
+            transform: translateY(-3px);
+        }
+
+        .token-card-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .token-card-value {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .token-card-value code {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.6rem;
+            background-color: var(--background-light);
+            border-radius: var(--radius-sm);
+            color: var(--brand-color-2);
+            font-weight: 600;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--border-subtle);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ===== PREVIEW SECTION ===== */
+        .preview-section {
+            background-color: var(--surface-white);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .iframe-container {
+            position: relative;
             width: 100%;
-            height: 450px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-            background: #fff;
+            background-color: var(--background-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(47, 32, 239, 0.08);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .iframe-container iframe {
+            display: block;
+            width: 100%;
+            height: 600px;
+            border: none;
+            background-color: var(--surface-white);
+        }
+
+        /* ===== USAGE GUIDELINES ===== */
+        .guidelines {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .guideline-card {
+            background-color: var(--surface-white);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--brand-color-3);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .guideline-card:hover {
+            border-left-color: var(--brand-color-2);
+            box-shadow: var(--shadow-md);
+            background-color: rgba(207, 249, 28, 0.02);
+        }
+
+        .guideline-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--brand-color-2);
+        }
+
+        .guideline-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+                display: none;
+                padding: 1rem 0;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .tokens-grid, .guidelines {
+                grid-template-columns: 1fr;
+            }
+
+            .iframe-container iframe {
+                height: 450px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <main class="documentation-container">
-        <h1>Button Component - Figma Master Preview</h1>
-        <p>Previewing the master button component directly from your Figma design system file:</p>
-        
-        <!-- Figma Embed Preview Section -->
-        <div class="preview-wrapper">
-            <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fak0IV3s1bbMRn3lrWQGxyj%2FCopy-of-Customer-Facing-Design-System--Copy-%3Fnode-id%3D6132-13564%26t%3DVbMJQhLPvxVSH8SM-4" allowfullscreen></iframe>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">O</div>
+                Onity Design System
+            </a>
+            <nav class="header-nav">
+                <a href="#getting-started">Getting Started</a>
+                <a href="#design-tokens">Design Tokens</a>
+                <a href="#components">Components</a>
+                <a href="https://6a7075b906817cbb8dcfe962-bjjhpjopup.chromatic.com" target="_blank" rel="noopener">Storybook</a>
+                <a href="#help">Help</a>
+            </nav>
         </div>
-    </main>
+    </header>
 
+    <!-- MAIN LAYOUT -->
+    <div class="main-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Getting Started</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#quick-start">Quick Start</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Design Tokens</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#colors">Colors</a></li>
+                    <li><a href="#typography">Typography</a></li>
+                    <li><a href="#spacing">Spacing</a></li>
+                    <li><a href="#shadows">Shadows</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Components</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#button" class="active">Button</a></li>
+                    <li><a href="#input">Input</a></li>
+                    <li><a href="#card">Card</a></li>
+                    <li><a href="#badge">Badge</a></li>
+                    <li><a href="#modal">Modal</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- CONTENT AREA -->
+        <main class="content">
+            <div class="breadcrumb">
+                <a href="#components">Components</a>
+                <span>/</span>
+                <span>Button</span>
+            </div>
+
+            <section class="hero-section">
+                <h1>Button Component</h1>
+                <p>The Button component is a fundamental interactive element used throughout the Onity Design System. It provides multiple variants, sizes, and states to meet various design requirements and user interaction patterns.</p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Usage Guidelines</h2>
+                <div class="guidelines">
+                    <div class="guideline-card">
+                        <h4>Purpose</h4>
+                        <p>Use buttons to trigger actions or submit information. Ensure each button has a clear, action-oriented label.</p>
+                    </div>
+                    <div class="guideline-card">
+                        <h4>Placement</h4>
+                        <p>Position primary buttons prominently. Group related buttons horizontally with consistent spacing.</p>
+                    </div>
+                    <div class="guideline-card">
+                        <h4>Accessibility</h4>
+                        <p>Ensure sufficient color contrast, keyboard navigation support, and clear focus states for all users.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Design Tokens</h2>
+                <p class="section-content">The following design tokens define the visual properties of the Button component:</p>
+                <div class="tokens-grid">
+                    <div class="token-card">
+                        <div class="token-card-label">Brand Color 1</div>
+                        <div class="token-card-value">
+                            <div class="color-swatch" style="background-color: rgb(255, 255, 255); border: 2px solid #e2e8f0;"></div>
+                            <code>#FFFFFF</code>
+                        </div>
+                        <p class="text-muted" style="font-size: 0.85rem;">White - Surface & Text</p>
+                    </div>
+                    <div class="token-card">
+                        <div class="token-card-label">Brand Color 2</div>
+                        <div class="token-card-value">
+                            <div class="color-swatch" style="background-color: #2F20EF;"></div>
+                            <code>#2F20EF</code>
+                        </div>
+                        <p class="text-muted" style="font-size: 0.85rem;">Electric Blue - Primary</p>
+                    </div>
+                    <div class="token-card">
+                        <div class="token-card-label">Brand Color 3</div>
+                        <div class="token-card-value">
+                            <div class="color-swatch" style="background-color: #CFF91C;"></div>
+                            <code>#CFF91C</code>
+                        </div>
+                        <p class="text-muted" style="font-size: 0.85rem;">Lime Green - Accent/Hover</p>
+                    </div>
+                    <div class="token-card">
+                        <div class="token-card-label">Padding</div>
+                        <div class="token-card-value">
+                            <code>8px 16px</code>
+                        </div>
+                        <p class="text-muted" style="font-size: 0.85rem;">Default button padding</p>
+                    </div>
+                    <div class="token-card">
+                        <div class="token-card-label">Border Radius</div>
+                        <div class="token-card-value">
+                            <code>6px</code>
+                        </div>
+                        <p class="text-muted" style="font-size: 0.85rem;">Standard rounded corners</p>
+                    </div>
+                    <div class="token-card">
+                        <div class="token-card-label">Font Family</div>
+                        <div class="token-card-value">
+                            <code>Arial</code>
+                        </div>
+                        <p class="text-muted" style="font-size: 0.85rem;">Primary font face</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LIVE PREVIEW SECTION (FIXED ID HERE) -->
+            <section class="section">
+                <h2 class="section-title">Live Preview</h2>
+                <p class="section-content">Explore interactive button examples and variations below:</p>
+                <div class="preview-section">
+                    <div class="iframe-container">
+                        <iframe src="https://6a7075b906817cbb8dcfe962-bjjhpjopup.chromatic.com/iframe.html?id=example-button--primary&viewMode=story" title="Storybook Button Component Preview"></iframe>
+                    </div>
+                </div>
+                <p class="section-content" style="margin-top: 1rem;">The preview above displays live Storybook components embedded directly in your documentation. Use the controls to interact with different button states in real-time.</p>
+                <p style="margin-top: 1rem;"><a href="https://6a7075b906817cbb8dcfe962-bjjhpjopup.chromatic.com" target="_blank" rel="noopener" style="display: inline-block; padding: 0.7rem 1rem; background: var(--brand-color-2); color: white; border-radius: 6px; text-decoration: none; font-weight: 600;">Open Storybook</a></p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Implementation</h2>
+                <div class="guidelines">
+                    <div class="guideline-card">
+                        <h4>Import</h4>
+                        <p>Import the Button component from the Onity design package and include required dependencies.</p>
+                    </div>
+                    <div class="guideline-card">
+                        <h4>Props</h4>
+                        <p>Configure buttons using props like variant, size, disabled, and onClick handlers for custom behavior.</p>
+                    </div>
+                    <div class="guideline-card">
+                        <h4>Theming</h4>
+                        <p>Leverage design tokens for consistent styling across your application using CSS variables.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
