@@ -39,22 +39,27 @@ export default {
 };
 
 export const Playground = {
-  render: (args) => <Button {...args} />,
+  render: (args) => (
+    <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', padding: '24px' }}>
+      <Button {...args} />
+      <Button {...args} leftIcon rightIcon />
+    </div>
+  ),
 };
 
 export const AllVariants = {
   render: () => (
-    <div style={{ display: 'grid', gap: '16px' }}>
+    <div style={{ display: 'grid', gap: '16px', padding: '24px' }}>
       {buttonVariants.map((variant) => (
-        <div key={`${variant.type}-${variant.state}-${variant.size}`} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div key={`${variant.type}-${variant.state}-${variant.size}`} style={{ display: 'flex', alignItems: 'center', gap: '12px', minHeight: '44px' }}>
           <Button
             label={variant.label}
             type={variant.type}
             state={variant.state}
             size={variant.size}
-            disabled={variant.disabled}
             leftIcon
             rightIcon
+            disabled={variant.state === 'Disabled'}
           />
           <span style={{ fontSize: 12, color: '#666' }}>{variant.type} / {variant.state} / {variant.size}</span>
         </div>

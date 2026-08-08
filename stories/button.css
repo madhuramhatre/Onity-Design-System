@@ -1,37 +1,152 @@
 @import './tokens.css';
 
-.storybook-button {
+.onity-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--onity-space-button-icon-gap);
   cursor: pointer;
-  border: 0;
+  border: 1px solid transparent;
   border-radius: var(--onity-radius-button);
   padding: var(--onity-space-button-padding-y) var(--onity-space-button-padding-x);
   font-weight: var(--onity-font-weight-button);
   line-height: var(--onity-line-height-button);
   font-family: var(--onity-font-family-base);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease, color 120ms ease, border-color 120ms ease;
 }
 
-.storybook-button--primary {
+.onity-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(56, 56, 56, 0.12);
+}
+
+.onity-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.onity-button:disabled,
+.onity-button--disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.onity-button--primary {
   background-color: var(--onity-color-primary-bg);
   color: var(--onity-color-primary-text);
 }
 
-.storybook-button--secondary {
+.onity-button--primary.onity-button--hover {
+  background-color: var(--onity-color-primary-hover-bg);
+  color: var(--onity-color-primary-hover-text);
+}
+
+.onity-button--primary.onity-button--pressed {
+  background-color: var(--onity-color-primary-pressed-bg);
+  color: var(--onity-color-primary-pressed-text);
+}
+
+.onity-button--primary.onity-button--disabled {
+  background-color: var(--onity-color-primary-disabled-bg);
+  color: var(--onity-color-primary-disabled-text);
+}
+
+.onity-button--secondary {
   background-color: var(--onity-color-secondary-bg);
   color: var(--onity-color-secondary-text);
 }
 
-.storybook-button--small {
+.onity-button--secondary.onity-button--hover {
+  background-color: var(--onity-color-secondary-hover-bg);
+  color: var(--onity-color-secondary-hover-text);
+}
+
+.onity-button--secondary.onity-button--pressed {
+  background-color: var(--onity-color-secondary-pressed-bg);
+  color: var(--onity-color-secondary-pressed-text);
+}
+
+.onity-button--secondary.onity-button--disabled {
+  background-color: var(--onity-color-secondary-disabled-bg);
+  color: var(--onity-color-secondary-disabled-text);
+}
+
+.onity-button--outline {
+  background-color: var(--onity-color-outline-bg);
+  color: var(--onity-color-outline-text);
+  border-color: var(--onity-color-outline-stroke);
+}
+
+.onity-button--outline.onity-button--hover {
+  color: var(--onity-color-outline-hover-text);
+  border-color: var(--onity-color-outline-hover-stroke);
+}
+
+.onity-button--outline.onity-button--pressed {
+  color: var(--onity-color-outline-pressed-text);
+  border-color: var(--onity-color-outline-pressed-stroke);
+}
+
+.onity-button--outline.onity-button--disabled {
+  color: var(--onity-color-outline-disabled-text);
+  border-color: var(--onity-color-outline-disabled-stroke);
+}
+
+.onity-button--link {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--onity-color-outline-text);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.onity-button--link.onity-button--hover {
+  color: var(--onity-color-outline-hover-text);
+}
+
+.onity-button--link.onity-button--pressed {
+  color: var(--onity-color-outline-pressed-text);
+}
+
+.onity-button--link.onity-button--disabled {
+  color: var(--onity-color-outline-disabled-text);
+}
+
+.onity-button--danger {
+  background-color: #C7040E;
+  color: #FFFFFF;
+}
+
+.onity-button--danger.onity-button--hover {
+  background-color: #8D0209;
+}
+
+.onity-button--white {
+  background-color: transparent;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.onity-button--white.onity-button--hover {
+  color: #E5E5E5;
+  border-color: #E5E5E5;
+}
+
+.onity-button--small {
   font-size: var(--onity-font-size-button-small);
 }
 
-.storybook-button--medium {
-  font-size: var(--onity-font-size-button-medium);
+.onity-button__icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
 }
 
-.storybook-button--large {
-  font-size: var(--onity-font-size-button-large);
+.onity-button__icon--left {
+  transform: rotate(180deg);
 }
