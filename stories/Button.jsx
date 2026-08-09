@@ -1,47 +1,6 @@
 import React, { useState } from "react";
 
-// Local JSX type fallback to resolve ts(7026) intrinsic element error
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [elemName: string]: any;
-    }
-  }
-}
-
-type ButtonState =
-  | "primary-filled-default"
-  | "primary-filled-hover"
-  | "primary-filled-pressed"
-  | "primary-filled-disabled"
-  | "secondary-filled-default"
-  | "secondary-filled-hover"
-  | "secondary-filled-pressed"
-  | "secondary-filled-disabled"
-  | "primary-outlined-default"
-  | "primary-outlined-hover"
-  | "primary-outlined-pressed"
-  | "primary-outlined-disabled"
-  | "primary-link-default"
-  | "primary-link-hover"
-  | "primary-link-pressed"
-  | "primary-link-disabled"
-  | "dark-default"
-  | "dark-hover"
-  | "dark-pressed";
-
-interface ButtonVariant {
-  id: ButtonState;
-  label: string;
-  leftIcon: string;
-  rightIcon: string;
-  buttonClassName: string;
-  textClassName: string;
-  wrapperClassName?: string;
-  disabled?: boolean;
-}
-
-const buttonVariants: ButtonVariant[] = [
+const buttonVariants = [
   {
     id: "primary-filled-default",
     label: "Button",
@@ -223,7 +182,7 @@ const buttonVariants: ButtonVariant[] = [
   },
 ];
 
-const ButtonIcon = ({ src }: { src: string }) => (
+const ButtonIcon = ({ src }) => (
   <span
     aria-hidden="true"
     className="relative h-6 w-6 shrink-0 bg-[100%_100%]"
@@ -234,7 +193,7 @@ const ButtonIcon = ({ src }: { src: string }) => (
 export const Box = () => {
   const [announcement, setAnnouncement] = useState("");
 
-  const handleButtonClick = (label: string) => {
+  const handleButtonClick = (label) => {
     setAnnouncement(`${label} activated`);
   };
 
@@ -276,4 +235,8 @@ export const Box = () => {
   );
 };
 
+// Required exports to satisfy Storybook and Header imports
+export const Button = Box;
+export { buttonVariants };
 export const createButton = Box;
+export default Box;
