@@ -1,7 +1,5 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
-
 import './button.css';
 
 /** Primary UI component for user interaction */
@@ -37,3 +35,17 @@ Button.propTypes = {
   /** Optional click handler */
   onClick: PropTypes.func,
 };
+
+// Required by Button.stories.jsx
+export default Button;
+
+export const buttonVariants = [
+  { label: 'Primary Filled', type: 'Primary Filled', state: 'Default', size: 'Regular' },
+  { label: 'Secondary Filled', type: 'Secondary Filled', state: 'Default', size: 'Regular' },
+  { label: 'Primary Outlined', type: 'Primary Outlined', state: 'Default', size: 'Regular' },
+  { label: 'Primary Link', type: 'Primary Link', state: 'Default', size: 'Regular' },
+  { label: 'Error Filled', type: 'Error Filled', state: 'Default', size: 'Regular' },
+  { label: 'White Outlined', type: 'White Outlined', state: 'Default', size: 'Regular' },
+  { label: 'Disabled Button', type: 'Primary Filled', state: 'Disabled', size: 'Regular' },
+  { label: 'Small Button', type: 'Primary Filled', state: 'Default', size: 'Small' },
+];
