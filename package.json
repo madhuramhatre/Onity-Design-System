@@ -26,6 +26,7 @@
     "@storybook/addon-a11y": "^10.5.7",
     "@storybook/addon-designs": "^11.1.4",
     "@storybook/addon-docs": "^10.5.7",
+    "@storybook/addon-mcp": "0.7.0",
     "@storybook/addon-vitest": "^10.5.7",
     "@storybook/html-vite": "^10.5.7",
     "@storybook/react-vite": "^10.5.7",
@@ -34,9 +35,8 @@
     "chromatic": "^18.1.0",
     "gh-pages": "^6.3.0",
     "playwright": "^1.62.1",
+    "prop-types": "latest",
     "storybook": "^10.5.7",
-    "vitest": "^4.1.10",
-    "@storybook/addon-mcp": "latest",
-    "prop-types": "latest"
+    "vitest": "^4.1.10"
   }
 }
