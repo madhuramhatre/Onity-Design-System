@@ -438,7 +438,7 @@
                 <a href="#getting-started">Getting Started</a>
                 <a href="#design-tokens">Design Tokens</a>
                 <a href="#components">Components</a>
-                <a href="https://6a7075b906817cbb8dcfe962-bjjhpjopup.chromatic.com" target="_blank" rel="noopener">Storybook</a>
+                <a href="https://6a7075b906817cbb8dcfe962-mqcndvevgv.chromatic.com" target="_blank" rel="noopener">Storybook</a>
                 <a href="#help">Help</a>
             </nav>
         </div>
@@ -562,34 +562,17 @@
                 </div>
             </section>
 
-            <!-- Interactive Button Component Section -->
+            <!-- LIVE PREVIEW SECTION (Storybook - All Variants) -->
             <section class="section">
-                <h2 class="section-title">Interactive Button State Control</h2>
-                <p class="section-content">Click the buttons below to switch states, or hover over the live button preview!</p>
-                <div class="preview-section">
-                    <div style="margin-bottom: 20px;">
-                        <button onclick="setPrimaryState()" style="padding: 8px 16px; margin-right: 10px; cursor: pointer; background: #2F20EF; color: white; border: none; border-radius: 4px; font-weight: bold;">Make Primary</button>
-                        <button onclick="setSecondaryState()" style="padding: 8px 16px; cursor: pointer; background: #f0f0f0; color: #333; border: none; border-radius: 4px; font-weight: bold;">Make Secondary</button>
-                    </div>
-                    <div style="padding: 30px; background: #f8f9fa; border-radius: 8px; text-align: center;">
-                        <button id="liveButton" onclick="alert('Button clicked!')" style="background-color: #2F20EF; color: #FFFFFF; padding: 12px 24px; font-size: 16px; font-family: Arial, sans-serif; border: none; border-radius: 6px; cursor: pointer; transition: all 0.2s ease-in-out;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-                            Button
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- LIVE PREVIEW SECTION (Storybook) -->
-            <section class="section">
-                <h2 class="section-title">Storybook Component Preview</h2>
-                <p class="section-content">Explore interactive button examples and variations below:</p>
+                <h2 class="section-title">Storybook Component Preview (All Variants)</h2>
+                <p class="section-content">Explore all interactive button variations and states below:</p>
                 <div class="preview-section">
                     <div class="iframe-container">
-                        <iframe src="https://6a7075b906817cbb8dcfe962-bjjhpjopup.chromatic.com/iframe.html?id=example-button--primary&viewMode=story" title="Storybook Button Component Preview"></iframe>
+                        <iframe src="https://6a7075b906817cbb8dcfe962-mqcndvevgv.chromatic.com/iframe.html?id=components-button--all-variants&viewMode=story" title="Storybook Button All Variants Preview"></iframe>
                     </div>
                 </div>
-                <p class="section-content" style="margin-top: 1rem;">The preview above displays live Storybook components embedded directly in your documentation. Use the controls to interact with different button states in real-time.</p>
-                <p style="margin-top: 1rem;"><a href="https://6a7075b906817cbb8dcfe962-bjjhpjopup.chromatic.com" target="_blank" rel="noopener" style="display: inline-block; padding: 0.7rem 1rem; background: var(--brand-color-2); color: white; border-radius: 6px; text-decoration: none; font-weight: 600;">Open Storybook</a></p>
+                <p class="section-content" style="margin-top: 1rem;">The preview above displays the complete set of button variants embedded directly from Storybook.</p>
+                <p style="margin-top: 1rem;"><a href="https://6a7075b906817cbb8dcfe962-mqcndvevgv.chromatic.com" target="_blank" rel="noopener" style="display: inline-block; padding: 0.7rem 1rem; background: var(--brand-color-2); color: white; border-radius: 6px; text-decoration: none; font-weight: 600;">Open Storybook</a></p>
             </section>
 
             <!-- Figma Master Preview Section -->
@@ -644,19 +627,6 @@
                 }
             });
         });
-
-        function setPrimaryState() {
-            const btn = document.getElementById('liveButton');
-            btn.style.backgroundColor = '#2F20EF';
-            btn.style.color = '#FFFFFF';
-            btn.style.border = 'none';
-        }
-        function setSecondaryState() {
-            const btn = document.getElementById('liveButton');
-            btn.style.backgroundColor = '#FFFFFF';
-            btn.style.color = '#2F20EF';
-            btn.style.border = '2px solid #2F20EF';
-        }
     </script>
 </body>
 </html>
