@@ -1,25 +1,16 @@
-[11:26:10.123] [INFO] storybook v10.5.6
-[11:26:12.413] [DEBUG] Getting package.json info for /workspaces/Onity-Design-System/package.json...
-[11:26:14.890] [DEBUG] Could not determine @babel/preset-env version in use. In case of runtime errors with @babel/preset-env, you may need to set the babelRemoveBugfixes feature flag in your `main.ts` file.
-[11:26:15.332] [WARN] 🚨 Unable to index ./stories/Button.mdx,./stories/Button.stories.jsx:
-  Error: You created a component docs page for 'Components/Button', but also tagged the CSF file with 'autodocs'. This is probably a mistake.
-    at _StoryIndexGenerator.chooseDuplicate (file:///workspaces/Onity-Design-System/node_modules/storybook/dist/core-server/index.js:19382:15)
-    at file:///workspaces/Onity-Design-System/node_modules/storybook/dist/core-server/index.js:19421:52
-    at Array.forEach (<anonymous>)
-    at _StoryIndexGenerator.getIndexAndStats (file:///workspaces/Onity-Design-System/node_modules/storybook/dist/core-server/index.js:19418:23)
-    at async _StoryIndexGenerator.getIndex (file:///workspaces/Onity-Design-System/node_modules/storybook/dist/core-server/index.js:19405:13)
-    at async Object.experimental_serverChannel (file:///workspaces/Onity-Design-System/node_modules/@storybook/addon-vitest/dist/preset.js:463:14)
-    at async buildDevStandalone (file:///workspaces/Onity-Design-System/node_modules/storybook/dist/core-server/index.js:11984:72)
-    at async withTelemetry (file:///workspaces/Onity-Design-System/node_modules/storybook/dist/_node-chunks/chunk-PUL3B5RN.js:1785:12)
-    at async dev (file:///workspaces/Onity-Design-System/node_modules/storybook/dist/bin/core.js:3850:3)
-    at async _Command.<anonymous> (file:///workspaces/Onity-Design-System/node_modules/storybook/dist/bin/core.js:3958:3)
-[11:26:15.336] [ERROR] Error: Unable to index ./stories/Button.mdx,./stories/Button.stories.jsx
-    at _StoryIndexGenerator.getIndexAndStats (file://./node_modules/storybook/dist/core-server/index.js:19426:15)
-    at async _StoryIndexGenerator.getIndex (file://./node_modules/storybook/dist/core-server/index.js:19405:13)
-    at async Object.experimental_serverChannel (file://./node_modules/@storybook/addon-vitest/dist/preset.js:463:14)
-    at async buildDevStandalone (file://./node_modules/storybook/dist/core-server/index.js:11984:72)
-    at async withTelemetry (file://./node_modules/storybook/dist/_node-chunks/chunk-PUL3B5RN.js:1785:12)
-    at async dev (file://./node_modules/storybook/dist/bin/core.js:3850:3)
-    at async _Command.<anonymous> (file://./node_modules/storybook/dist/bin/core.js:3958:3)
-[11:26:15.339] [WARN] Broken build, fix the error above.
-You may need to refresh the browser.
+[11:22:25.711] [INFO] [36mInitializing Storybook[39m
+[11:22:26.428] [DEBUG] Getting package.json info for /workspaces/Onity-Design-System/package.json...
+[11:22:26.428] [INFO] Package manager: npm
+[11:22:26.430] [DEBUG] Getting CLI versions from NPM for storybook...
+[11:22:26.430] [DEBUG] Executing command: npm info storybook version
+[11:22:27.406] [INFO] Adding Storybook version 10.5.7 to your project
+[11:22:27.408] [DEBUG] Executing command: npm config get min-release-age --workspaces=false --include-workspace-root
+[11:22:27.551] [DEBUG] Using cached package.json for /workspaces/Onity-Design-System/package.json...
+[11:22:27.552] [ERROR] Unable to initialize Storybook in this directory.
+
+Storybook couldn't detect a supported framework or configuration for your project. Make sure you're inside a framework project (e.g., React, Vue, Svelte, Angular, Next.js) and that its dependencies are installed.
+
+Tips:
+- Run init in an empty directory or create a new framework app first.
+- If this directory contains unrelated files, try a new directory for Storybook.
+[11:23:04.667] [PROMPT] Would you like to send anonymous crash reports to improve Storybook and fix bugs faster? {"choice":true}

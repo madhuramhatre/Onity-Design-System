@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o storybook",
+    "build-storybook": "storybook build",
     "chromatic": "STORYBOOK_IS_CHROMATIC=true npx chromatic --project-token=chpt_247395fd9f1b48f"
   },
   "repository": {
@@ -22,19 +22,21 @@
   },
   "homepage": "https://github.com/madhuramhatre/Onity-Design-System#readme",
   "devDependencies": {
-    "@chromatic-com/storybook": "^5.2.1",
-    "@storybook/addon-a11y": "^10.5.5",
+    "@chromatic-com/storybook": "^5.3.0",
+    "@storybook/addon-a11y": "^10.5.7",
     "@storybook/addon-designs": "^11.1.4",
-    "@storybook/addon-docs": "^10.5.5",
-    "@storybook/addon-vitest": "^10.5.5",
-    "@storybook/html-vite": "^10.5.5",
-    "@storybook/react-vite": "^10.5.6",
+    "@storybook/addon-docs": "^10.5.7",
+    "@storybook/addon-vitest": "^10.5.7",
+    "@storybook/html-vite": "^10.5.7",
+    "@storybook/react-vite": "^10.5.7",
     "@vitest/browser-playwright": "^4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
     "chromatic": "^18.1.0",
     "gh-pages": "^6.3.0",
     "playwright": "^1.62.1",
-    "storybook": "^10.5.5",
-    "vitest": "^4.1.10"
+    "storybook": "^10.5.7",
+    "vitest": "^4.1.10",
+    "@storybook/addon-mcp": "latest",
+    "prop-types": "latest"
   }
 }
