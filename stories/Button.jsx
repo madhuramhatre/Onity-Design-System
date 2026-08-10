@@ -1,242 +1,133 @@
-import React, { useState } from "react";
+import React from "react";
+// If button.css is already imported globally in .storybook/preview.js (or your
+// app entry point), remove this import to avoid loading it twice.
+import "./button.css";
 
-const buttonVariants = [
-  {
-    id: "primary-filled-default",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-1",
-    buttonClassName: "bg-[color:var(--buttons-primary-filled-default-bg)]",
-    textClassName: "text-[color:var(--buttons-primary-filled-default-text)]",
-  },
-  {
-    id: "primary-filled-hover",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-2",
-    buttonClassName: "bg-[color:var(--buttons-primary-filled-hover-bg)]",
-    textClassName: "text-[color:var(--buttons-primary-filled-hover-text)]",
-  },
-  {
-    id: "primary-filled-pressed",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-3",
-    buttonClassName: "bg-[color:var(--buttons-primary-filled-pressed-bg)]",
-    textClassName: "text-[color:var(--buttons-primary-filled-pressed-text)]",
-  },
-  {
-    id: "primary-filled-disabled",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    buttonClassName: "bg-[color:var(--buttons-primary-filled-disabled-AA-bg)]",
-    textClassName:
-      "text-[color:var(--buttons-primary-filled-disabled-AA-text)]",
-    disabled: true,
-  },
-  {
-    id: "secondary-filled-default",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-1",
-    buttonClassName: "bg-[color:var(--buttons-secondary-filled-default-bg)]",
-    textClassName: "text-[color:var(--buttons-secondary-filled-default-text)]",
-  },
-  {
-    id: "secondary-filled-hover",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-2",
-    buttonClassName: "bg-[color:var(--buttons-secondary-filled-hover-bg)]",
-    textClassName: "text-[color:var(--buttons-secondary-filled-hover-text)]",
-  },
-  {
-    id: "secondary-filled-pressed",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-3",
-    buttonClassName: "bg-[color:var(--buttons-secondary-filled-pressed-bg)]",
-    textClassName: "text-[color:var(--buttons-secondary-filled-pressed-text)]",
-  },
-  {
-    id: "secondary-filled-disabled",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    buttonClassName:
-      "bg-[color:var(--buttons-secondary-filled-disabled-AA-bg)]",
-    textClassName:
-      "text-[color:var(--buttons-secondary-filled-disabled-AA-text)]",
-    disabled: true,
-  },
-  {
-    id: "primary-outlined-default",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-1",
-    buttonClassName:
-      "bg-[color:var(--buttons-primary-outlined-default-bg)] border border-solid border-[color:var(--buttons-primary-outlined-default-stroke)]",
-    textClassName: "text-[color:var(--buttons-primary-outlined-default-text)]",
-  },
-  {
-    id: "primary-outlined-hover",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-2",
-    buttonClassName:
-      "bg-[color:var(--buttons-primary-outlined-hover-bg)] border border-solid border-[color:var(--buttons-primary-outlined-hover-stroke)]",
-    textClassName: "text-[color:var(--buttons-primary-outlined-hover-text)]",
-  },
-  {
-    id: "primary-outlined-pressed",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-3",
-    buttonClassName:
-      "bg-[color:var(--buttons-primary-outlined-pressed-bg)] border-2 border-solid border-[color:var(--buttons-primary-outlined-pressed-stroke)]",
-    textClassName: "text-[color:var(--buttons-primary-outlined-pressed-text)]",
-  },
-  {
-    id: "primary-outlined-disabled",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    buttonClassName:
-      "bg-[color:var(--buttons-primary-outlined-disabled-AA-bg)] border border-solid border-[color:var(--buttons-primary-outlined-disabled-AA-stroke)]",
-    textClassName:
-      "text-[color:var(--buttons-primary-outlined-disabled-AA-text)]",
-    disabled: true,
-  },
-  {
-    id: "primary-link-default",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-1",
-    buttonClassName: "bg-[color:var(--buttons-primary-link-default-bg)]",
-    textClassName: "text-[color:var(--buttons-primary-link-default-text)]",
-  },
-  {
-    id: "primary-link-hover",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-2",
-    buttonClassName: "bg-[color:var(--buttons-primary-link-hover-bg)]",
-    textClassName: "text-[color:var(--buttons-primary-link-hover-text)]",
-  },
-  {
-    id: "primary-link-pressed",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-3",
-    buttonClassName: "bg-[color:var(--buttons-primary-link-pressed-bg)]",
-    textClassName: "text-[color:var(--buttons-primary-link-pressed-text)]",
-  },
-  {
-    id: "primary-link-disabled",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    buttonClassName: "bg-[color:var(--buttons-primary-link-disabled-AA-bg)]",
-    textClassName: "text-[color:var(--buttons-primary-link-disabled-AA-text)]",
-    disabled: true,
-  },
-  {
-    id: "dark-default",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-1",
-    buttonClassName: "",
-    textClassName: "text-[color:var(--color-palette-base-white)]",
-  },
-  {
-    id: "dark-hover",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-2",
-    buttonClassName: "bg-[color:var(--color-palette-gray-800)]",
-    textClassName: "text-[color:var(--color-palette-base-white)]",
-  },
-  {
-    id: "dark-pressed",
-    label: "Button",
-    leftIcon: "./assets/accessibility.svg",
-    rightIcon: "./assets/accessibility.svg",
-    wrapperClassName: "shadow-elevation-lvl-3",
-    buttonClassName: "bg-[color:var(--color-palette-gray-900)]",
-    textClassName: "text-[color:var(--color-palette-base-white)]",
-  },
-];
+/**
+ * Maps the Figma "Type" variant to the .onity-button modifier class
+ * defined in button.css.
+ */
+const TYPE_CLASS_MAP = {
+  "Primary Filled": "primary",
+  "Secondary Filled": "secondary",
+  "Primary Outlined": "outline",
+  "Primary Link": "link",
+  "Error Filled": "danger",
+  "White Outlined": "white",
+};
 
-const ButtonIcon = ({ src }) => (
-  <span
-    aria-hidden="true"
-    className="relative h-6 w-6 shrink-0 bg-[100%_100%]"
-    style={{ backgroundImage: `url(${src})` }}
-  />
+/**
+ * Maps the Figma "Size" variant to the .onity-button size modifier class.
+ */
+const SIZE_CLASS_MAP = {
+  Regular: "regular",
+  Small: "small",
+};
+
+const ButtonIcon = () => (
+  <span className="onity-button__icon" aria-hidden="true">
+    <img src="./assets/accessibility.svg" alt="" />
+  </span>
 );
 
-export const Box = () => {
-  const [announcement, setAnnouncement] = useState("");
+/**
+ * ----- Button -----
+ * Prop-driven Button matching the Figma "Button" component, styled via the
+ * project's real .onity-button BEM classes (button.css) — NOT Tailwind
+ * arbitrary values and NOT --buttons-* custom properties (neither exists
+ * in this project).
+ *
+ *   Type: Primary Filled | Secondary Filled | Primary Outlined | Primary Link | Error Filled | White Outlined
+ *   State: Default | Hover | Pressed | Disabled
+ *   Size: Regular | Small
+ *
+ * Note on State: Hover/Pressed are rendered here as forced modifier classes
+ * (so Storybook can show them without a real mouse interaction). In actual
+ * app usage the real :hover/:active states in button.css will take over
+ * naturally — you generally won't pass state="Hover" from application code.
+ */
+export const Button = ({
+  label = "Button",
+  type = "Primary Filled",
+  state = "Default",
+  size = "Regular",
+  leftIcon = false,
+  rightIcon = false,
+  disabled = false,
+  onClick,
+  ...rest
+}) => {
+  const isDisabled = disabled || state === "Disabled";
+  const effectiveState = isDisabled ? "Disabled" : state;
 
-  const handleButtonClick = (label) => {
-    setAnnouncement(`${label} activated`);
-  };
+  const typeClass = TYPE_CLASS_MAP[type] ?? "primary";
+  const sizeClass = SIZE_CLASS_MAP[size] ?? "regular";
+
+  const stateClass =
+    effectiveState === "Hover"
+      ? "onity-button--hover"
+      : effectiveState === "Pressed"
+      ? "onity-button--pressed"
+      : effectiveState === "Disabled"
+      ? "onity-button--disabled"
+      : "";
+
+  const className = [
+    "onity-button",
+    `onity-button--${typeClass}`,
+    `onity-button--${sizeClass}`,
+    stateClass,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <main className="w-full p-4 box-border">
-      <section
-        aria-label="Button component variants"
-        className="flex w-full flex-wrap items-start gap-6 rounded-[5px] border border-dashed border-[#9747ff] p-6 box-border"
-      >
-        {buttonVariants.map((variant) => (
-          <div
-            key={variant.id}
-            className={`inline-flex items-start ${variant.wrapperClassName ?? ""}`}
-          >
-            <button
-              type="button"
-              disabled={variant.disabled}
-              aria-disabled={variant.disabled ? "true" : undefined}
-              onClick={() => handleButtonClick(variant.label)}
-              className={`all-unset box-border inline-flex h-10 items-center justify-center gap-[var(--buttons-button-base-icon-text-icon-gap)] rounded-[var(--primitives-sizing-size-2)] pt-[var(--buttons-button-base-padding-top)] pr-[var(--buttons-button-base-padding-right)] pb-[var(--buttons-button-base-padding-bottom)] pl-[var(--buttons-button-base-padding-left)] ${variant.buttonClassName}`}
-            >
-              <ButtonIcon src={variant.leftIcon} />
-              <span className="inline-flex flex-[0_0_auto] items-center justify-center gap-2.5">
-                <span
-                  className={`relative mt-[-1px] flex w-fit items-center whitespace-nowrap font-arial-button-2 text-[length:var(--arial-button-2-font-size)] font-[number:var(--arial-button-2-font-weight)] tracking-[var(--arial-button-2-letter-spacing)] leading-[var(--arial-button-2-line-height)] [font-style:var(--arial-button-2-font-style)] ${variant.textClassName}`}
-                >
-                  {variant.label}
-                </span>
-              </span>
-              <ButtonIcon src={variant.rightIcon} />
-            </button>
-          </div>
-        ))}
-      </section>
-      <p className="sr-only" aria-live="polite">
-        {announcement}
-      </p>
-    </main>
+    <button
+      type="button"
+      disabled={isDisabled}
+      aria-disabled={isDisabled ? "true" : undefined}
+      onClick={onClick}
+      className={className}
+      {...rest}
+    >
+      {leftIcon && <ButtonIcon />}
+      <span className="onity-button__label">{label}</span>
+      {rightIcon && <ButtonIcon />}
+    </button>
   );
 };
 
-// Required exports to satisfy Storybook and Header imports
-export const Button = Box;
-export { buttonVariants };
-export const createButton = Box;
-export default Box;
+/**
+ * ----- Full variant matrix (matches live Figma component) -----
+ * 6 types x 4 states x 2 sizes = 48 combinations
+ */
+const TYPES = [
+  "Primary Filled",
+  "Secondary Filled",
+  "Primary Outlined",
+  "Primary Link",
+  "Error Filled",
+  "White Outlined",
+];
+const STATES = ["Default", "Hover", "Pressed", "Disabled"];
+const SIZES = ["Regular", "Small"];
+
+export const buttonVariants = TYPES.flatMap((type) =>
+  STATES.flatMap((state) =>
+    SIZES.map((size) => ({
+      id: `${TYPE_CLASS_MAP[type]}-${state.toLowerCase()}-${size.toLowerCase()}`,
+      type,
+      state,
+      size,
+      label: "Button",
+    }))
+  )
+);
+
+/**
+ * ----- Backward-compat exports -----
+ * Kept in case other files still import these names.
+ */
+export const Box = Button;
+export const createButton = Button;
+export default Button;
