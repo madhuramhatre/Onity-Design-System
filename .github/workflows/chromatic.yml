@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write # required so the auto-update step can push the URL fix back
+
 jobs:
   chromatic:
     runs-on: ubuntu-latest
@@ -24,8 +27,48 @@ jobs:
         run: npm ci
 
       - name: Publish to Chromatic
+        id: chromatic
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          # autoAcceptChanges: true   # uncomment if you want main-branch builds
-          # to auto-accept diffs instead of requiring manual review each time
+          # autoAcceptChanges: true   # uncomment to auto-accept diffs on main
+          # instead of requiring manual review each time
+
+      - name: Update index.html with the new Storybook URL
+        # Only run this on pushes to main — not on pull requests, where we don't
+        # want to commit changes back to a branch that isn't merged yet.
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          STORYBOOK_URL: ${{ steps.chromatic.outputs.storybookUrl }}
+        run: |
+          echo "New Storybook URL: $STORYBOOK_URL"
+
+          if [ -z "$STORYBOOK_URL" ]; then
+            echo "No storybookUrl output from Chromatic — skipping index.html update."
+            exit 0
+          fi
+
+          # Strip any trailing path/query so we get just the origin,
+          # e.g. https://<hash>-<hash>.chromatic.com
+          ORIGIN=$(echo "$STORYBOOK_URL" | grep -oE '^https://[a-z0-9.-]+\.chromatic\.com')
+
+          if [ -z "$ORIGIN" ]; then
+            echo "Could not parse a chromatic.com origin from '$STORYBOOK_URL' — skipping."
+            exit 0
+          fi
+
+          echo "Resolved origin: $ORIGIN"
+
+          # Replace ANY existing chromatic.com origin in index.html with the new one,
+          # regardless of what the old hash was.
+          sed -i -E "s#https://[a-z0-9.-]+\.chromatic\.com#${ORIGIN}#g" index.html
+
+          if git diff --quiet index.html; then
+            echo "index.html already up to date — nothing to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add index.html
+            git commit -m "chore: auto-update Storybook URL in index.html [skip ci]"
+            git push
+          fi
