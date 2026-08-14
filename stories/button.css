@@ -1,30 +1,196 @@
-.storybook-button {
-  display: inline-block;
+.onity-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--onity-space-button-icon-gap, 8px);
+  min-height: 40px;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--onity-radius-button, 6px);
+  font-family: var(--onity-font-family-base, 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif);
+  font-weight: var(--onity-font-weight-button, 700);
+  line-height: var(--onity-line-height-button, 1);
+  font-size: var(--onity-font-size-button-medium, 14px);
+  transition: transform 120ms ease, background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
   cursor: pointer;
-  border: 0;
-  border-radius: 3em;
-  font-weight: 700;
-  line-height: 1;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: inherit;
+  background: transparent;
+  text-decoration: none;
+  user-select: none;
 }
-.storybook-button--primary {
-  background-color: #555ab9;
-  color: white;
+
+.onity-button--small {
+  min-height: 32px;
+  padding: 8px 16px;
+  font-size: var(--onity-font-size-button-small, 12px);
 }
-.storybook-button--secondary {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+
+.onity-button--regular {
+  min-height: 40px;
+  padding: 10px 20px;
+  font-size: var(--onity-font-size-button-medium, 14px);
+}
+
+.onity-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(47, 32, 239, 0.25);
+}
+
+.onity-button:active {
+  transform: translateY(1px);
+}
+
+.onity-button--primary {
+  background-color: var(--onity-color-primary-bg, #2F20EF);
+  color: var(--onity-color-primary-text, #FFFFFF);
+}
+
+.onity-button--primary.onity-button--hover,
+.onity-button--primary:hover {
+  background-color: var(--onity-color-primary-hover-bg, #CFF91C);
+  color: var(--onity-color-primary-hover-text, #383838);
+}
+
+.onity-button--primary.onity-button--pressed {
+  background-color: var(--onity-color-primary-pressed-bg, #383838);
+  color: var(--onity-color-primary-pressed-text, #FFFFFF);
+}
+
+.onity-button--primary.onity-button--disabled,
+.onity-button--primary:disabled {
+  background-color: var(--onity-color-primary-disabled-bg, #EDEDED);
+  color: var(--onity-color-primary-disabled-text, #6B6B6B);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.onity-button--secondary {
+  background-color: var(--onity-color-secondary-bg, #CFF91C);
+  color: var(--onity-color-secondary-text, #383838);
+}
+
+.onity-button--secondary.onity-button--hover,
+.onity-button--secondary:hover {
+  background-color: var(--onity-color-secondary-hover-bg, #383838);
+  color: var(--onity-color-secondary-hover-text, #FFFFFF);
+}
+
+.onity-button--secondary.onity-button--pressed {
+  background-color: var(--onity-color-secondary-pressed-bg, #2F20EF);
+  color: var(--onity-color-secondary-pressed-text, #FFFFFF);
+}
+
+.onity-button--secondary.onity-button--disabled,
+.onity-button--secondary:disabled {
+  background-color: var(--onity-color-secondary-disabled-bg, #EDEDED);
+  color: var(--onity-color-secondary-disabled-text, #6B6B6B);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.onity-button--outline {
   background-color: transparent;
-  color: #333;
+  color: var(--onity-color-outline-text, #2F20EF);
+  border-color: var(--onity-color-outline-stroke, #2F20EF);
 }
-.storybook-button--small {
-  padding: 10px 16px;
-  font-size: 12px;
+
+.onity-button--outline.onity-button--hover,
+.onity-button--outline:hover {
+  color: var(--onity-color-outline-hover-text, #383838);
+  border-color: var(--onity-color-outline-hover-stroke, #383838);
 }
-.storybook-button--medium {
-  padding: 11px 20px;
-  font-size: 14px;
+
+.onity-button--outline.onity-button--pressed {
+  color: var(--onity-color-outline-pressed-text, #1F14AB);
+  border-color: var(--onity-color-outline-pressed-stroke, #1F14AB);
 }
-.storybook-button--large {
-  padding: 12px 24px;
-  font-size: 16px;
+
+.onity-button--outline.onity-button--disabled,
+.onity-button--outline:disabled {
+  color: var(--onity-color-outline-disabled-text, #6B6B6B);
+  border-color: var(--onity-color-outline-disabled-stroke, #6B6B6B);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.onity-button--link {
+  background-color: transparent;
+  color: var(--onity-color-outline-text, #2F20EF);
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: auto;
+}
+
+.onity-button--link.onity-button--hover,
+.onity-button--link:hover {
+  color: var(--onity-color-outline-hover-text, #383838);
+}
+
+.onity-button--link.onity-button--pressed {
+  color: var(--onity-color-outline-pressed-text, #1F14AB);
+}
+
+.onity-button--link.onity-button--disabled,
+.onity-button--link:disabled {
+  color: var(--onity-color-outline-disabled-text, #6B6B6B);
+  cursor: not-allowed;
+}
+
+.onity-button--danger {
+  background-color: #C7040E;
+  color: #FFFFFF;
+}
+
+.onity-button--danger.onity-button--hover,
+.onity-button--danger:hover {
+  background-color: #8D0209;
+}
+
+.onity-button--danger.onity-button--pressed {
+  background-color: #710108;
+}
+
+.onity-button--danger.onity-button--disabled,
+.onity-button--danger:disabled {
+  background-color: #EDEDED;
+  color: #6B6B6B;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.onity-button--white {
+  background-color: #FFFFFF;
+  color: #2F20EF;
+  border-color: #FFFFFF;
+}
+
+.onity-button--white.onity-button--hover,
+.onity-button--white:hover {
+  background-color: #F4F6FF;
+}
+
+.onity-button--white.onity-button--pressed {
+  background-color: #E9EBFF;
+}
+
+.onity-button--white.onity-button--disabled,
+.onity-button--white:disabled {
+  background-color: #F4F4F4;
+  color: #6B6B6B;
+  border-color: #F4F4F4;
+  cursor: not-allowed;
+}
+
+.onity-button__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.onity-button__icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+  color: inherit;
 }
