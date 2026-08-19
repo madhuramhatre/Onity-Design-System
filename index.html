@@ -1,0 +1,844 @@
+<!--
+  ONITY DESIGN SYSTEM — Button documentation sections
+  ====================================================
+  Drop-in sections for your docs index.html, in the order they're meant
+  to appear:
+
+    0. #onity-button-intro          — page title + external links
+    1. #onity-button-interactive    — real, hoverable buttons for all 6 types
+    2. #onity-button-configuration  — Fully working JS playground
+    3. #onity-button-anatomy        — annotated spec diagram
+    4. #onity-button-tokens         — structural + color token tables
+    5. #onity-button-usage          — when to use each type, do/don't list
+-->
+
+<style>
+  /* =====================================================================
+     REAL ONITY BUTTON STYLES
+     ===================================================================== */
+  .onity-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--onity-space-button-icon-gap, 8px);
+    min-height: 40px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: var(--onity-radius-button, 6px);
+    font-family: var(--onity-font-family-base, 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif);
+    font-weight: var(--onity-font-weight-button, 700);
+    line-height: var(--onity-line-height-button, 1);
+    font-size: var(--onity-font-size-button-medium, 14px);
+    transition: transform 120ms ease, background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+    cursor: pointer;
+    color: inherit;
+    background: transparent;
+    text-decoration: none;
+    user-select: none;
+  }
+
+  .onity-button--small {
+    min-height: 32px;
+    padding: 8px 16px;
+    font-size: var(--onity-font-size-button-small, 12px);
+  }
+
+  .onity-button--regular {
+    min-height: 40px;
+    padding: 10px 20px;
+    font-size: var(--onity-font-size-button-medium, 14px);
+  }
+
+  .onity-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(47, 32, 239, 0.25);
+  }
+
+  .onity-button:active {
+    transform: translateY(1px);
+  }
+
+  /* Primary */
+  .onity-button--primary {
+    background-color: var(--onity-color-primary-bg, #2F20EF);
+    color: var(--onity-color-primary-text, #FFFFFF);
+  }
+  .onity-button--primary.onity-button--hover,
+  .onity-button--primary:hover:not(:disabled) {
+    background-color: var(--onity-color-primary-hover-bg, #CFF91C);
+    color: var(--onity-color-primary-hover-text, #383838);
+  }
+  .onity-button--primary.onity-button--pressed,
+  .onity-button--primary:active:not(:disabled) {
+    background-color: var(--onity-color-primary-pressed-bg, #383838);
+    color: var(--onity-color-primary-pressed-text, #FFFFFF);
+  }
+  .onity-button--primary.onity-button--disabled,
+  .onity-button--primary:disabled {
+    background-color: var(--onity-color-primary-disabled-bg, #EDEDED);
+    color: var(--onity-color-primary-disabled-text, #6B6B6B);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* Secondary */
+  .onity-button--secondary {
+    background-color: var(--onity-color-secondary-bg, #CFF91C);
+    color: var(--onity-color-secondary-text, #383838);
+  }
+  .onity-button--secondary.onity-button--hover,
+  .onity-button--secondary:hover:not(:disabled) {
+    background-color: var(--onity-color-secondary-hover-bg, #383838);
+    color: var(--onity-color-secondary-hover-text, #FFFFFF);
+  }
+  .onity-button--secondary.onity-button--pressed,
+  .onity-button--secondary:active:not(:disabled) {
+    background-color: var(--onity-color-secondary-pressed-bg, #2F20EF);
+    color: var(--onity-color-secondary-pressed-text, #FFFFFF);
+  }
+  .onity-button--secondary.onity-button--disabled,
+  .onity-button--secondary:disabled {
+    background-color: var(--onity-color-secondary-disabled-bg, #EDEDED);
+    color: var(--onity-color-secondary-disabled-text, #6B6B6B);
+    cursor: not-allowed;
+  }
+
+  /* Outline */
+  .onity-button--outline {
+    background-color: transparent;
+    color: var(--onity-color-outline-text, #2F20EF);
+    border-color: var(--onity-color-outline-stroke, #2F20EF);
+  }
+  .onity-button--outline.onity-button--hover,
+  .onity-button--outline:hover:not(:disabled) {
+    color: var(--onity-color-outline-hover-text, #383838);
+    border-color: var(--onity-color-outline-hover-stroke, #383838);
+  }
+  .onity-button--outline.onity-button--pressed,
+  .onity-button--outline:active:not(:disabled) {
+    color: var(--onity-color-outline-pressed-text, #1F14AB);
+    border-color: var(--onity-color-outline-pressed-stroke, #1F14AB);
+  }
+  .onity-button--outline.onity-button--disabled,
+  .onity-button--outline:disabled {
+    color: var(--onity-color-outline-disabled-text, #6B6B6B);
+    border-color: var(--onity-color-outline-disabled-stroke, #6B6B6B);
+    cursor: not-allowed;
+  }
+
+  /* Link */
+  .onity-button--link {
+    background-color: transparent;
+    color: var(--onity-color-outline-text, #2F20EF);
+    border-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    min-height: auto;
+  }
+  .onity-button--link.onity-button--hover,
+  .onity-button--link:hover:not(:disabled) {
+    color: var(--onity-color-outline-hover-text, #383838);
+  }
+  .onity-button--link.onity-button--pressed,
+  .onity-button--link:active:not(:disabled) {
+    color: var(--onity-color-outline-pressed-text, #1F14AB);
+  }
+  .onity-button--link.onity-button--disabled,
+  .onity-button--link:disabled {
+    color: var(--onity-color-outline-disabled-text, #6B6B6B);
+    cursor: not-allowed;
+  }
+
+  /* Danger */
+  .onity-button--danger {
+    background-color: #C7040E;
+    color: #FFFFFF;
+  }
+  .onity-button--danger.onity-button--hover,
+  .onity-button--danger:hover:not(:disabled) { background-color: #8D0209; }
+  .onity-button--danger.onity-button--pressed,
+  .onity-button--danger:active:not(:disabled) { background-color: #710108; }
+  .onity-button--danger.onity-button--disabled,
+  .onity-button--danger:disabled {
+    background-color: #EDEDED;
+    color: #6B6B6B;
+    cursor: not-allowed;
+  }
+
+  /* White */
+  .onity-button--white {
+    background-color: transparent;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+  }
+  .onity-button--white.onity-button--hover,
+  .onity-button--white:hover:not(:disabled) { background-color: rgba(255, 255, 255, 0.15); }
+  .onity-button--white.onity-button--pressed,
+  .onity-button--white:active:not(:disabled) { background-color: rgba(255, 255, 255, 0.3); }
+  .onity-button--white.onity-button--disabled,
+  .onity-button--white:disabled {
+    color: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.35);
+    cursor: not-allowed;
+  }
+
+  .onity-button__label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .onity-button__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    color: inherit;
+  }
+  
+  .onity-button__icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+  }
+
+  /* ===== Shared Documentation Styles ===== */
+  .ob-root {
+    --ob-primary: #2F20EF;
+    --ob-lime: #CFF91C;
+    --ob-ink: #383838;
+    --ob-ink-soft: #6B6B6B;
+    --ob-line: #E4E4E7;
+    --ob-bg-soft: #F7F7FA;
+    --ob-radius: 10px;
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--ob-ink);
+  }
+
+  .ob-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 0;
+  }
+
+  .ob-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ob-primary);
+    background: #EDEBFF;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+
+  .ob-h2 {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .ob-sub {
+    font-size: 15px;
+    color: var(--ob-ink-soft);
+    margin: 0 0 32px;
+    max-width: 640px;
+    line-height: 1.5;
+  }
+
+  /* ===== Section 0: Intro ===== */
+  .ob-intro-section { padding: 40px 0 8px; }
+  .ob-intro-title { font-size: 32px; font-weight: 800; margin: 0 0 10px; }
+  .ob-intro-desc { font-size: 15px; line-height: 1.6; color: var(--ob-ink-soft); max-width: 640px; margin: 0 0 28px; }
+  .ob-link-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .ob-link-card {
+    display: flex; align-items: center; gap: 10px; padding: 12px 18px;
+    border: 1.5px solid var(--ob-line); border-radius: 10px; text-decoration: none;
+    color: var(--ob-ink); font-size: 13px; font-weight: 700; background: #fff;
+    transition: all 0.15s ease;
+  }
+  .ob-link-card:hover { border-color: var(--ob-primary); background: #FAFAFF; transform: translateY(-1px); }
+  .ob-link-icon { width: 18px; height: 18px; flex-shrink: 0; }
+  .ob-link-icon svg { width: 100%; height: 100%; }
+
+  /* ===== Section 1: Interactive Grid ===== */
+  .ob-interactive-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px;
+  }
+  .ob-interactive-card {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+    padding: 28px 16px; border: 1px solid var(--ob-line); border-radius: var(--ob-radius);
+    background: linear-gradient(45deg, #fafafa 25%, transparent 25%), linear-gradient(-45deg, #fafafa 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #fafafa 75%), linear-gradient(-45deg, transparent 75%, #fafafa 75%);
+    background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  }
+  .ob-interactive-card--dark { background: #1A1A1A; }
+  .ob-interactive-card--dark .ob-interactive-label { color: #A1A1AA; }
+  .ob-interactive-label { font-size: 11px; font-weight: 700; color: var(--ob-ink-soft); }
+
+  /* ===== Section 2: Configuration ===== */
+  .ob-playground { border: 1px solid var(--ob-line); border-radius: var(--ob-radius); overflow: hidden; background: #fff; }
+  .ob-controls { display: flex; flex-wrap: wrap; gap: 24px; padding: 20px 24px; background: var(--ob-bg-soft); border-bottom: 1px solid var(--ob-line); }
+  .ob-control { display: flex; flex-direction: column; gap: 6px; }
+  .ob-control label { font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--ob-ink-soft); }
+  .ob-control select, .ob-control input[type="text"] {
+    font-family: inherit; font-size: 13px; font-weight: 600; padding: 8px 12px;
+    border-radius: 7px; border: 1.5px solid var(--ob-line); background: #fff; min-width: 140px;
+  }
+  .ob-control select {
+    padding-right: 32px; appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B6B6B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+  }
+  .ob-control select:focus-visible, .ob-control input[type="text"]:focus-visible {
+    outline: none; box-shadow: 0 0 0 3px rgba(47,32,239,0.25); border-color: var(--ob-primary);
+  }
+  .ob-control--toggle { justify-content: center; }
+  .ob-toggle-row { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; }
+  
+  .ob-switch { position: relative; display: inline-block; width: 36px; height: 20px; flex-shrink: 0; }
+  .ob-switch input { opacity: 0; width: 0; height: 0; }
+  .ob-slider { position: absolute; cursor: pointer; inset: 0; background: #D7D7DC; border-radius: 999px; transition: 0.15s; }
+  .ob-slider::before { content: ''; position: absolute; height: 14px; width: 14px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: 0.15s; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+  .ob-switch input:checked + .ob-slider { background: var(--ob-primary); }
+  .ob-switch input:checked + .ob-slider::before { transform: translateX(16px); }
+
+  .ob-preview {
+    display: flex; align-items: center; justify-content: center; min-height: 140px; padding: 32px; transition: background 0.2s ease;
+    background: linear-gradient(45deg, #fafafa 25%, transparent 25%), linear-gradient(-45deg, #fafafa 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #fafafa 75%), linear-gradient(-45deg, transparent 75%, #fafafa 75%);
+    background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  }
+  .ob-preview.dark-mode { background: #1A1A1A; }
+  .ob-static-preview { pointer-events: none; } /* Prevents native hover/active states interfering with our JS forced states */
+
+  .ob-code-tabs { display: flex; border-bottom: 1px solid var(--ob-line); background: var(--ob-bg-soft); }
+  .ob-code-tab {
+    font-family: inherit; font-size: 12px; font-weight: 700; padding: 12px 20px; background: none;
+    border: none; border-bottom: 2px solid transparent; color: var(--ob-ink-soft); cursor: pointer;
+  }
+  .ob-code-tab.active { color: var(--ob-primary); border-bottom-color: var(--ob-primary); background: #fff; }
+
+  .ob-code-panel-wrap { position: relative; background: #1E1E24; }
+  .ob-code-panel {
+    display: none; margin: 0; padding: 20px 24px; color: #E4E4E7;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12.5px; line-height: 1.6; overflow-x: auto; white-space: pre;
+  }
+  .ob-code-panel.active { display: block; }
+  .ob-copy-btn {
+    position: absolute; top: 12px; right: 16px; font-family: inherit; font-size: 11px; font-weight: 700;
+    color: #E4E4E7; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 6px 12px; cursor: pointer; transition: 0.15s;
+  }
+  .ob-copy-btn:hover { background: rgba(255,255,255,0.16); }
+  .ob-copy-btn.copied { color: var(--ob-lime); border-color: var(--ob-lime); }
+
+  /* ===== Section 3: Anatomy ===== */
+  .ob-anatomy-card {
+    border: 1px solid var(--ob-line); border-radius: var(--ob-radius); padding: 110px 90px 150px 130px;
+    display: flex; justify-content: center; align-items: center; position: relative; margin-bottom: 32px; overflow: visible;
+    background: #fdfdfd; background-image: linear-gradient(#ececec 1px, transparent 1px), linear-gradient(90deg, #ececec 1px, transparent 1px); background-size: 16px 16px; background-position: -8px -8px;
+  }
+  .ob-anatomy-wrapper { position: relative; display: inline-block; }
+  .ob-anatomy-btn { position: relative; display: inline-flex; align-items: center; gap: 8px; background: var(--ob-primary); color: #fff; font-weight: 700; font-size: 14px; border-radius: 6px; padding: 10px 20px; min-height: 40px; border: 1px solid rgba(0,0,0,0.1); z-index: 2; box-sizing: border-box; }
+  .ob-rl-overlay { position: absolute; top: 0; bottom: 0; background: rgba(220, 20, 60, 0.22); pointer-events: none; z-index: 10; }
+  .ob-rl-overlay-v { position: absolute; left: 0; right: 0; background: rgba(220, 20, 60, 0.22); pointer-events: none; z-index: 10; }
+  .ob-rl-bracket-top { position: absolute; top: -8px; height: 6px; border: 1.5px solid #d00000; border-bottom: none; z-index: 10; }
+  .ob-rl-bracket-right { position: absolute; width: 6px; border: 1.5px solid #d00000; border-left: none; z-index: 10; }
+  .ob-rl-bracket-left { position: absolute; width: 6px; border: 1.5px solid #d00000; border-right: none; z-index: 10; }
+  .ob-rl-corner-mark { position: absolute; width: 12px; height: 12px; border: 1.5px solid #d00000; z-index: 10; pointer-events: none; }
+  .ob-rl-leader { position: absolute; border-left: 1.5px solid #d00000; z-index: 10; pointer-events: none; }
+  .ob-rl-label { position: absolute; color: #d00000; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 11px; font-weight: 700; white-space: nowrap; z-index: 10; }
+  .ob-anatomy-caption { font-size: 12px; color: var(--ob-ink-soft); text-align: center; margin-top: -16px; margin-bottom: 32px; }
+
+  .ob-spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--ob-line); border: 1px solid var(--ob-line); border-radius: var(--ob-radius); overflow: hidden; }
+  .ob-spec-cell { background: #fff; padding: 16px 18px; }
+  .ob-spec-label { font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--ob-ink-soft); margin-bottom: 6px; }
+  .ob-spec-value { font-size: 15px; font-weight: 700; }
+  .ob-spec-note { font-size: 11px; color: var(--ob-ink-soft); margin-top: 2px; }
+
+  /* ===== Section 4: Tokens ===== */
+  .ob-tokens-table-wrap { border: 1px solid var(--ob-line); border-radius: var(--ob-radius); overflow: hidden; margin-bottom: 40px; }
+  .ob-struct-table { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; }
+  .ob-struct-table th { text-align: left; font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--ob-ink-soft); padding: 12px 16px; background: var(--ob-bg-soft); border-bottom: 1px solid var(--ob-line); }
+  .ob-struct-table td { padding: 12px 16px; border-bottom: 1px solid var(--ob-line); vertical-align: middle; }
+  .ob-struct-table tr:last-child td { border-bottom: none; }
+  .ob-token-name { font-weight: 700; font-size: 13px; font-family: 'SFMono-Regular', Consolas, monospace; color: #D83B01;}
+  .ob-swatch-row { display: flex; align-items: center; gap: 8px; }
+  .ob-swatch { width: 16px; height: 16px; border-radius: 4px; border: 1px solid var(--ob-line); flex-shrink: 0; }
+  .ob-token-section-label { font-size: 13px; font-weight: 800; margin: 32px 0 12px; color: var(--ob-ink-soft); text-transform: uppercase; }
+
+  /* Token type-switcher pills */
+  .ob-token-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .ob-token-pill {
+    font-family: inherit; font-size: 12.5px; font-weight: 700; padding: 8px 16px;
+    border-radius: 999px; border: 1.5px solid var(--ob-line); background: #fff;
+    color: var(--ob-ink-soft); cursor: pointer; transition: all 0.15s ease;
+  }
+  .ob-token-pill:hover { border-color: var(--ob-primary); color: var(--ob-primary); }
+  .ob-token-pill.active { background: var(--ob-primary); border-color: var(--ob-primary); color: #fff; }
+  .ob-swatch--checkered {
+    background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 6px 6px; background-position: 0 0, 0 3px, 3px -3px, -3px 0;
+  }
+  .ob-swatch--onwhite { background: #1A1A1A; position: relative; overflow: hidden; }
+  .ob-swatch--onwhite > span { position: absolute; inset: 0; display: block; }
+  .ob-token-value-mono { font-family: 'SFMono-Regular', Consolas, monospace; font-size: 12px; color: var(--ob-ink-soft); }
+
+  /* ===== Section 5: Usage ===== */
+  .ob-dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--ob-line); border: 1px solid var(--ob-line); border-radius: var(--ob-radius); overflow: hidden; }
+  .ob-dodont-col { background: #fff; padding: 24px; }
+  .ob-dodont-title { font-size: 14px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
+  .ob-dodont-title.do { color: #1A8917; }
+  .ob-dodont-title.dont { color: #C7040E; }
+  .ob-dodont-col ul { margin: 0; padding: 0; list-style: none; }
+  .ob-dodont-col li { font-size: 14px; line-height: 1.5; color: var(--ob-ink); padding-left: 24px; position: relative; margin-bottom: 12px; }
+  .ob-dodont-col li::before { position: absolute; left: 0; font-weight: 800; }
+  .ob-dodont-title.do ~ ul li::before { content: '✓'; color: #1A8917; }
+  .ob-dodont-title.dont ~ ul li::before { content: '✕'; color: #C7040E; }
+  @media (max-width: 640px) { .ob-dodont { grid-template-columns: 1fr; } }
+</style>
+
+<!-- ============ SECTION 0: INTRO ============ -->
+<section id="onity-button-intro" class="ob-root ob-section ob-intro-section">
+  <h1 class="ob-intro-title">Button</h1>
+  <p class="ob-intro-desc">
+    The Onity Button component, kept in sync with Figma via Storybook Connect.
+    Explore the live variants, copy production-ready code, and reference the full spec below.
+  </p>
+  <div class="ob-link-row">
+    <a class="ob-link-card" href="https://6a7075b906817cbb8dcfe962-guyicnxiqi.chromatic.com/?path=/story/components-button--all-variants" target="_blank" rel="noopener"><span class="ob-link-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#2F20EF" stroke-width="1.6"/><path d="M8 9h8M8 13h5" stroke="#2F20EF" stroke-width="1.6" stroke-linecap="round"/></svg></span>Open in Storybook</a>
+    <a class="ob-link-card" href="https://www.figma.com/design/ak0IV3s1bbMRn3lrWQGxyj/Copy-of-Customer-Facing-Design-System--Copy-?node-id=6132-13564" target="_blank" rel="noopener"><span class="ob-link-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#2F20EF" stroke-width="1.6"/><path d="M12 3v18M3 12h18" stroke="#2F20EF" stroke-width="1.6"/></svg></span>View in Figma</a>
+    <a class="ob-link-card" href="https://github.com/madhuramhatre/Onity-Design-System" target="_blank" rel="noopener"><span class="ob-link-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#2F20EF" stroke-width="1.6"/></svg></span>GitHub repo</a>
+    <a class="ob-link-card" href="https://6a7075b906817cbb8dcfe962-guyicnxiqi.chromatic.com/builds?appId=6a7075b906817cbb8dcfe962" target="_blank" rel="noopener"><span class="ob-link-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5 11-11" stroke="#2F20EF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Chromatic builds</a>
+  </div>
+</section>
+
+<!-- ============ SECTION 1: INTERACTIVE SHOWCASE ============ -->
+<section id="onity-button-interactive" class="ob-root ob-section">
+  <span class="ob-eyebrow">Interact</span>
+  <h2 class="ob-h2">See every type live</h2>
+  <p class="ob-sub">Real buttons using true browser hover and active states.</p>
+
+  <div class="ob-interactive-grid">
+    <div class="ob-interactive-card"><button class="onity-button onity-button--primary onity-button--regular"><span class="onity-button__label">Button</span></button><span class="ob-interactive-label">Primary Filled</span></div>
+    <div class="ob-interactive-card"><button class="onity-button onity-button--secondary onity-button--regular"><span class="onity-button__label">Button</span></button><span class="ob-interactive-label">Secondary Filled</span></div>
+    <div class="ob-interactive-card"><button class="onity-button onity-button--outline onity-button--regular"><span class="onity-button__label">Button</span></button><span class="ob-interactive-label">Primary Outlined</span></div>
+    <div class="ob-interactive-card"><button class="onity-button onity-button--link onity-button--regular"><span class="onity-button__label">Button</span></button><span class="ob-interactive-label">Primary Link</span></div>
+    <div class="ob-interactive-card"><button class="onity-button onity-button--danger onity-button--regular"><span class="onity-button__label">Button</span></button><span class="ob-interactive-label">Error Filled</span></div>
+    <div class="ob-interactive-card ob-interactive-card--dark"><button class="onity-button onity-button--white onity-button--regular"><span class="onity-button__label">Button</span></button><span class="ob-interactive-label">White Outlined</span></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: CONFIGURATION ============ -->
+<section id="onity-button-configuration" class="ob-root ob-section">
+  <span class="ob-eyebrow">Configuration</span>
+  <h2 class="ob-h2">Configure &amp; copy code</h2>
+  <p class="ob-sub">Use the controls to customize the button. The preview and code panels will update instantly.</p>
+
+  <div class="ob-playground">
+    <div class="ob-controls">
+      <div class="ob-control">
+        <label>Type</label>
+        <select id="ob-type">
+          <option value="primary">Primary Filled</option>
+          <option value="secondary">Secondary Filled</option>
+          <option value="outline">Primary Outlined</option>
+          <option value="link">Primary Link</option>
+          <option value="danger">Error Filled</option>
+          <option value="white">White Outlined</option>
+        </select>
+      </div>
+      <div class="ob-control">
+        <label>State</label>
+        <select id="ob-state">
+          <option value="default">Default</option>
+          <option value="hover">Hover</option>
+          <option value="pressed">Pressed</option>
+          <option value="disabled">Disabled</option>
+        </select>
+      </div>
+      <div class="ob-control">
+        <label>Size</label>
+        <select id="ob-size">
+          <option value="regular">Regular</option>
+          <option value="small">Small</option>
+        </select>
+      </div>
+      <div class="ob-control">
+        <label>Label</label>
+        <input type="text" id="ob-label" value="Button" maxlength="24" />
+      </div>
+      <div class="ob-control ob-control--toggle">
+        <div class="ob-toggle-row">
+          <span>Left icon</span>
+          <label class="ob-switch"><input type="checkbox" id="ob-left-icon" /><span class="ob-slider"></span></label>
+        </div>
+      </div>
+      <div class="ob-control ob-control--toggle">
+        <div class="ob-toggle-row">
+          <span>Right icon</span>
+          <label class="ob-switch"><input type="checkbox" id="ob-right-icon" /><span class="ob-slider"></span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="ob-preview" id="ob-preview-area">
+      <button id="ob-preview-btn" class="onity-button onity-button--primary onity-button--regular ob-static-preview" type="button">
+        <span class="onity-button__label">Button</span>
+      </button>
+    </div>
+
+    <div class="ob-code-tabs">
+      <button class="ob-code-tab active" data-panel="html">HTML</button>
+      <button class="ob-code-tab" data-panel="css">CSS</button>
+      <button class="ob-code-tab" data-panel="ios">iOS (SwiftUI)</button>
+      <button class="ob-code-tab" data-panel="android">Android (Compose)</button>
+    </div>
+
+    <div class="ob-code-panel-wrap">
+      <button class="ob-copy-btn" id="ob-copy-btn">Copy</button>
+      <pre class="ob-code-panel active" id="ob-panel-html"></pre>
+      <pre class="ob-code-panel" id="ob-panel-css"></pre>
+      <pre class="ob-code-panel" id="ob-panel-ios"></pre>
+      <pre class="ob-code-panel" id="ob-panel-android"></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: ANATOMY ============ -->
+<section id="onity-button-anatomy" class="ob-root ob-section">
+  <span class="ob-eyebrow">Anatomy</span>
+  <h2 class="ob-h2">Button specs</h2>
+  
+  <div class="ob-anatomy-card">
+    <div class="ob-anatomy-wrapper">
+      <div class="ob-anatomy-btn">
+        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        <span>Button</span>
+        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <!-- Horizontal padding: 20px left / right -->
+      <div class="ob-rl-overlay" style="left: 0; width: 20px; border-radius: 5px 0 0 5px;"></div>
+      <div class="ob-rl-overlay" style="right: 0; width: 20px; border-radius: 0 5px 5px 0;"></div>
+      <div class="ob-rl-bracket-top" style="left: 0; width: 20px;"><span class="ob-rl-label" style="top: -22px; left: 2px;">20px</span></div>
+      <div class="ob-rl-bracket-top" style="right: 0; width: 20px;"><span class="ob-rl-label" style="top: -22px; left: 2px;">20px</span></div>
+
+      <!-- Vertical padding: 10px top / bottom -->
+      <div class="ob-rl-overlay-v" style="top: 0; height: 10px; border-radius: 5px 5px 0 0;"></div>
+      <div class="ob-rl-overlay-v" style="bottom: 0; height: 10px; border-radius: 0 0 5px 5px;"></div>
+      <div class="ob-rl-bracket-left" style="left: -8px; top: 0; height: 10px;"><span class="ob-rl-label" style="top: -2px; left: -46px;">10px</span></div>
+      <div class="ob-rl-bracket-left" style="left: -8px; bottom: 0; height: 10px;"><span class="ob-rl-label" style="bottom: -2px; left: -46px;">10px</span></div>
+
+      <!-- Overall height: 40px -->
+      <div class="ob-rl-bracket-right" style="top: 0; right: -14px; height: 40px;"><span class="ob-rl-label" style="top: 12px; left: 8px;">40px</span></div>
+
+      <!-- Border radius (bottom-left corner) -->
+      <div class="ob-rl-corner-mark" style="left: -4px; bottom: -4px; border-top: none; border-right: none; border-radius: 0 0 0 8px;"></div>
+      <div class="ob-rl-leader" style="left: 4px; bottom: -34px; height: 26px;"></div>
+      <span class="ob-rl-label" style="left: -8px; bottom: -50px;">6px radius</span>
+
+      <!-- Border width -->
+      <div class="ob-rl-leader" style="left: 44px; bottom: -20px; height: 14px;"></div>
+      <span class="ob-rl-label" style="left: 30px; bottom: -36px;">1px border</span>
+    </div>
+  </div>
+  <p class="ob-anatomy-caption">Shown at true 1× size — Regular / Primary Filled. Values apply to every type unless noted otherwise.</p>
+
+  <div class="ob-spec-grid">
+    <div class="ob-spec-cell"><div class="ob-spec-label">Padding (Reg)</div><div class="ob-spec-value">10px 20px</div></div>
+    <div class="ob-spec-cell"><div class="ob-spec-label">Padding (Sml)</div><div class="ob-spec-value">8px 16px</div></div>
+    <div class="ob-spec-cell"><div class="ob-spec-label">Height</div><div class="ob-spec-value">40px / 32px</div></div>
+    <div class="ob-spec-cell"><div class="ob-spec-label">Icon Gap</div><div class="ob-spec-value">8px</div></div>
+    <div class="ob-spec-cell"><div class="ob-spec-label">Radius</div><div class="ob-spec-value">6px</div></div>
+    <div class="ob-spec-cell"><div class="ob-spec-label">Font</div><div class="ob-spec-value" style="font-size:13px">Nunito Sans 700</div></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: TOKENS ============ -->
+<section id="onity-button-tokens" class="ob-root ob-section">
+  <span class="ob-eyebrow">Tokens</span>
+  <h2 class="ob-h2">Design Variables</h2>
+  <p class="ob-sub">The core CSS variables that power the Onity Button component — pick a type to see all four states.</p>
+
+  <h3 class="ob-token-section-label">Color Tokens</h3>
+  <div class="ob-token-pills" id="ob-token-pills">
+    <button class="ob-token-pill active" data-type="primary">Primary Filled</button>
+    <button class="ob-token-pill" data-type="secondary">Secondary Filled</button>
+    <button class="ob-token-pill" data-type="outline">Primary Outlined</button>
+    <button class="ob-token-pill" data-type="link">Primary Link</button>
+    <button class="ob-token-pill" data-type="danger">Error Filled</button>
+    <button class="ob-token-pill" data-type="white">White Outlined</button>
+  </div>
+  <div class="ob-tokens-table-wrap">
+    <table class="ob-struct-table">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Background</th>
+          <th>Text</th>
+          <th>Border</th>
+        </tr>
+      </thead>
+      <tbody id="ob-token-color-body"><!-- populated by script --></tbody>
+    </table>
+  </div>
+
+  <h3 class="ob-token-section-label">Structural Tokens</h3>
+  <div class="ob-tokens-table-wrap">
+    <table class="ob-struct-table">
+      <thead>
+        <tr>
+          <th>Token Name</th>
+          <th>Property</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="ob-token-name">--onity-radius-button</span></td><td>Border Radius</td><td>6px</td></tr>
+        <tr><td><span class="ob-token-name">--onity-space-button-icon-gap</span></td><td>Icon–Label Gap</td><td>8px</td></tr>
+        <tr><td><span class="ob-token-name">--onity-font-family-base</span></td><td>Font Family</td><td>'Nunito Sans', sans-serif</td></tr>
+        <tr><td><span class="ob-token-name">--onity-font-weight-button</span></td><td>Font Weight</td><td>700 (Bold)</td></tr>
+        <tr><td><span class="ob-token-name">--onity-line-height-button</span></td><td>Line Height</td><td>1</td></tr>
+        <tr><td><span class="ob-token-name">--onity-font-size-button-medium</span></td><td>Font Size — Regular</td><td>14px</td></tr>
+        <tr><td><span class="ob-token-name">--onity-font-size-button-small</span></td><td>Font Size — Small</td><td>12px</td></tr>
+        <tr><td colspan="2" style="font-weight:700;">Padding — Regular</td><td>10px 20px</td></tr>
+        <tr><td colspan="2" style="font-weight:700;">Padding — Small</td><td>8px 16px</td></tr>
+        <tr><td colspan="2" style="font-weight:700;">Min height — Regular / Small</td><td>40px / 32px</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: USAGE ============ -->
+<section id="onity-button-usage" class="ob-root ob-section">
+  <span class="ob-eyebrow">Guidelines</span>
+  <h2 class="ob-h2">Best Practices</h2>
+  <p class="ob-sub">Rules for applying buttons across the Onity ecosystem to ensure consistency.</p>
+
+  <div class="ob-dodont">
+    <div class="ob-dodont-col">
+      <div class="ob-dodont-title do">Do</div>
+      <ul>
+        <li>Use <strong>Primary Filled</strong> for the single most important action on a screen.</li>
+        <li>Keep button labels clear, actionable, and short (1-3 words).</li>
+        <li>Use <strong>Error Filled</strong> only for destructive, unrecoverable actions (e.g., Delete Account).</li>
+        <li>Ensure buttons are spaced adequately for touch targets on mobile devices.</li>
+      </ul>
+    </div>
+    <div class="ob-dodont-col">
+      <div class="ob-dodont-title dont">Don't</div>
+      <ul>
+        <li>Don't place multiple Primary buttons next to each other in the same view.</li>
+        <li>Don't wrap button text to two lines. If text is too long, rethink the copy.</li>
+        <li>Don't use icons in a button unless they directly clarify the action.</li>
+        <li>Don't use <strong>White Outlined</strong> buttons on light backgrounds where they become invisible.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     JAVASCRIPT: CONFIGURATION PLAYGROUND LOGIC
+     ===================================================================== -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // UI Elements
+    const typeSelect = document.getElementById('ob-type');
+    const stateSelect = document.getElementById('ob-state');
+    const sizeSelect = document.getElementById('ob-size');
+    const labelInput = document.getElementById('ob-label');
+    const leftIconCheck = document.getElementById('ob-left-icon');
+    const rightIconCheck = document.getElementById('ob-right-icon');
+    
+    // Preview Elements
+    const previewBtn = document.getElementById('ob-preview-btn');
+    const previewArea = document.getElementById('ob-preview-area');
+    
+    // Code Panels
+    const panelHtml = document.getElementById('ob-panel-html');
+    const panelCss = document.getElementById('ob-panel-css');
+    const panelIos = document.getElementById('ob-panel-ios');
+    const panelAndroid = document.getElementById('ob-panel-android');
+    const copyBtn = document.getElementById('ob-copy-btn');
+    const tabs = document.querySelectorAll('.ob-code-tab');
+
+    // SVG Icons
+    const iconLeftSVG = `<svg class="onity-button__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>`;
+    const iconRightSVG = `<svg class="onity-button__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+
+    // Update Function
+    function updateConfig() {
+      const type = typeSelect.value;
+      const state = stateSelect.value;
+      const size = sizeSelect.value;
+      const label = labelInput.value || 'Button';
+      const hasLeft = leftIconCheck.checked;
+      const hasRight = rightIconCheck.checked;
+
+      // 1. Update Preview Background (Dark mode for white outline)
+      if (type === 'white') {
+        previewArea.classList.add('dark-mode');
+      } else {
+        previewArea.classList.remove('dark-mode');
+      }
+
+      // 2. Update Button Classes & Attributes
+      // Note: 'ob-static-preview' stops native hover so our forced state classes work visually
+      previewBtn.className = `onity-button onity-button--${type} onity-button--${size} ob-static-preview`;
+      previewBtn.disabled = false;
+
+      let htmlDisabledAttr = '';
+      if (state === 'disabled') {
+        previewBtn.disabled = true;
+        previewBtn.classList.add('onity-button--disabled');
+        htmlDisabledAttr = ' disabled';
+      } else if (state === 'hover') {
+        previewBtn.classList.add('onity-button--hover');
+      } else if (state === 'pressed') {
+        previewBtn.classList.add('onity-button--pressed');
+      }
+
+      // 3. Update Button Inner HTML
+      let innerHtml = '';
+      if (hasLeft) innerHtml += iconLeftSVG;
+      innerHtml += `<span class="onity-button__label">${label}</span>`;
+      if (hasRight) innerHtml += iconRightSVG;
+      previewBtn.innerHTML = innerHtml;
+
+      // 4. Generate HTML String
+      let htmlCode = `<button class="onity-button onity-button--${type} onity-button--${size}" type="button"${htmlDisabledAttr}>\n`;
+      if (hasLeft) htmlCode += `  ${iconLeftSVG}\n`;
+      htmlCode += `  <span class="onity-button__label">${label}</span>\n`;
+      if (hasRight) htmlCode += `  ${iconRightSVG}\n`;
+      htmlCode += `</button>`;
+      
+      // Escape HTML for code block
+      panelHtml.innerHTML = htmlCode.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+      // 5. Generate CSS Snippet
+      panelCss.textContent = `/* Ensure base .onity-button variables & styles are imported */\n.my-custom-wrapper .onity-button--${type} {\n  /* Your custom overrides here */\n  width: 100%;\n}`;
+
+      // 6. Generate iOS (SwiftUI) Snippet
+      panelIos.textContent = `Button(action: { print("Tapped") }) {\n  HStack(spacing: 8) {\n${hasLeft ? '    Image(systemName: "plus")\n' : ''}    Text("${label}")\n${hasRight ? '    Image(systemName: "arrow.right")\n' : ''}  }\n}\n.buttonStyle(OnityButtonStyle(type: .${type}, size: .${size}))${state === 'disabled' ? '\n.disabled(true)' : ''}`;
+
+      // 7. Generate Android (Compose) Snippet
+      panelAndroid.textContent = `OnityButton(\n  text = "${label}",\n  type = ButtonType.${type.toUpperCase()},\n  size = ButtonSize.${size.toUpperCase()},\n${hasLeft ? '  leadingIcon = { Icon(Icons.Default.Add, contentDescription = null) },\n' : ''}${hasRight ? '  trailingIcon = { Icon(Icons.Default.ArrowForward, contentDescription = null) },\n' : ''}  enabled = ${state !== 'disabled'},\n  onClick = { /* Handle click */ }\n)`;
+    }
+
+    // Attach Event Listeners
+    [typeSelect, stateSelect, sizeSelect, labelInput, leftIconCheck, rightIconCheck].forEach(el => {
+      el.addEventListener('input', updateConfig);
+      el.addEventListener('change', updateConfig);
+    });
+
+    // Tab Switching Logic
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.ob-code-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.ob-code-panel').forEach(p => p.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.getElementById('ob-panel-' + tab.dataset.panel).classList.add('active');
+      });
+    });
+
+    // Copy to Clipboard Logic
+    copyBtn.addEventListener('click', () => {
+      const activePanel = document.querySelector('.ob-code-panel.active');
+      navigator.clipboard.writeText(activePanel.textContent).then(() => {
+        copyBtn.textContent = 'Copied!';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.textContent = 'Copy';
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+
+    // Initialize on load
+    // ===== Tokens section: type-switcher =====
+    const TOKEN_DATA = {
+      primary: {
+        default:  { bg: '#2F20EF', text: '#FFFFFF', border: null },
+        hover:    { bg: '#CFF91C', text: '#383838', border: null },
+        pressed:  { bg: '#383838', text: '#FFFFFF', border: null },
+        disabled: { bg: '#EDEDED', text: '#6B6B6B', border: null }
+      },
+      secondary: {
+        default:  { bg: '#CFF91C', text: '#383838', border: null },
+        hover:    { bg: '#383838', text: '#FFFFFF', border: null },
+        pressed:  { bg: '#2F20EF', text: '#FFFFFF', border: null },
+        disabled: { bg: '#EDEDED', text: '#6B6B6B', border: null }
+      },
+      outline: {
+        default:  { bg: 'transparent', text: '#2F20EF', border: '#2F20EF' },
+        hover:    { bg: 'transparent', text: '#383838', border: '#383838' },
+        pressed:  { bg: 'transparent', text: '#1F14AB', border: '#1F14AB' },
+        disabled: { bg: 'transparent', text: '#6B6B6B', border: '#6B6B6B' }
+      },
+      link: {
+        default:  { bg: 'transparent', text: '#2F20EF', border: 'transparent' },
+        hover:    { bg: 'transparent', text: '#383838', border: 'transparent' },
+        pressed:  { bg: 'transparent', text: '#1F14AB', border: 'transparent' },
+        disabled: { bg: 'transparent', text: '#6B6B6B', border: 'transparent' }
+      },
+      danger: {
+        default:  { bg: '#C7040E', text: '#FFFFFF', border: null },
+        hover:    { bg: '#8D0209', text: '#FFFFFF', border: null },
+        pressed:  { bg: '#710108', text: '#FFFFFF', border: null },
+        disabled: { bg: '#EDEDED', text: '#6B6B6B', border: null }
+      },
+      white: {
+        default:  { bg: 'transparent', text: '#FFFFFF', border: '#FFFFFF' },
+        hover:    { bg: 'rgba(255,255,255,0.15)', text: '#FFFFFF', border: '#FFFFFF' },
+        pressed:  { bg: 'rgba(255,255,255,0.3)', text: '#FFFFFF', border: '#FFFFFF' },
+        disabled: { bg: 'transparent', text: 'rgba(255,255,255,0.35)', border: 'rgba(255,255,255,0.35)' }
+      }
+    };
+    const STATE_LABELS = { default: 'Default', hover: 'Hover', pressed: 'Pressed', disabled: 'Disabled' };
+
+    // White's colors (white/transparent/rgba-white) are illegible on a plain
+    // white table cell, so those specific swatches render on a dark backdrop
+    // chip instead — everything else renders as a normal solid/checkered swatch.
+    function swatchHtml(type, value) {
+      if (value === null || value === undefined) return '<span class="ob-token-value-mono">—</span>';
+      if (value === 'transparent') {
+        return '<div class="ob-swatch-row"><div class="ob-swatch ob-swatch--checkered"></div><span class="ob-token-value-mono">transparent</span></div>';
+      }
+      if (type === 'white') {
+        return '<div class="ob-swatch-row"><div class="ob-swatch ob-swatch--onwhite"><span style="background:' + value + '"></span></div><span class="ob-token-value-mono">' + value + '</span></div>';
+      }
+      return '<div class="ob-swatch-row"><div class="ob-swatch" style="background:' + value + '"></div><span class="ob-token-value-mono">' + value + '</span></div>';
+    }
+
+    function renderTokenTable(type) {
+      const body = document.getElementById('ob-token-color-body');
+      const states = TOKEN_DATA[type];
+      let rows = '';
+      ['default', 'hover', 'pressed', 'disabled'].forEach((state) => {
+        const s = states[state];
+        rows += '<tr>' +
+          '<td style="font-weight:700;">' + STATE_LABELS[state] + '</td>' +
+          '<td>' + swatchHtml(type, s.bg) + '</td>' +
+          '<td>' + swatchHtml(type, s.text) + '</td>' +
+          '<td>' + swatchHtml(type, s.border) + '</td>' +
+          '</tr>';
+      });
+      body.innerHTML = rows;
+    }
+
+    document.querySelectorAll('.ob-token-pill').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.ob-token-pill').forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+        renderTokenTable(pill.dataset.type);
+      });
+    });
+    renderTokenTable('primary');
+
+    updateConfig();
+  });
+</script>
